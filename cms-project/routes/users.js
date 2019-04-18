@@ -33,9 +33,9 @@ router.post('/edit', function (req, res, next) {
     if (id==''||username==''||age==""){
         res.json('请输入真确的值！')
     }else {
-        user[id].username=username;
-        user[id].age=age;
-        res.json(user[id]);
+        user[id-1].username=username;
+        user[id-1].age=age;
+        res.json(user[(id-1)]);
     }
 });
 //注册
