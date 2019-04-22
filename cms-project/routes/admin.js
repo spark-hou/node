@@ -47,6 +47,75 @@ router.post('/category/edit', function (req, res) {
         })
     })
 })
+//获取指定id的分类
+router.get('/category/detail', function (req, res) {
+    var sql = "select * from category where category_id=?";
+    pool.query(sql, [req.query.category_id], function (error, results) {
+        if (results.length == 0) {
+            res.json({
+                status: false,
+                msg: '失败'
+            })
+            return;
+        }
+        res.json({
+            status: true,
+            msg: results[0]
+        })
+    })
+})
+//添加文章
+router.post('/article/add', function (req, res) {
+    var sql = "INSERT INTO article (category_id,title,description,content,main_photo) VALUES (?,?,?,?,?)";
+    pool.query(sql, [req.body.category_id, req.body.title, req.body.description, req.body.content, req.body.main_photo], function (error, results) {
+        res.json({
+            status: true,
+            msg: "上传成功"
+        })
 
+    })
+})
+//删除指定ID的文章
+router.post('/article/del', function (req, res) {
+    var sql = "DELETE from article where article_id=?";
+    pool.query(sql, [req.body.article_id], function (error, results) {
+        res.json({
+            status: true,
+            msg: "删除成功"
+        })
+
+    })
+})
+//编辑指定id文章
+router.post('/article/edit', function (req, res) {
+    var sql = "UPDATE article set category_id=?,title=?,description=?,content=?,main_photo =? WHERE article_id=?";
+    pool.query(sql, [req.body.category_id, req.body.title, req.body.description, req.body.content, req.body.main_photo, req.body.article_id], function (error, results) {
+        res.json({
+            status: true,
+            msg: "编辑成功"
+        })
+
+    })
+})
+// 获取指定id详情
+router.get('/article/detail', function (req, res) {
+    var sql = "SELECT * from article where article_id=?";
+    pool.query(sql, [req.query.article_id], function (error, results) {
+        res.json({
+            status: true,
+            msg: results[0]
+        })
+    })
+})
+//获取文章列表
+router.get('/article/list', function (req, res) {
+    var sql = "SELECT category_id,title from article";
+    pool.query(sql,function (error, results) {
+        res.json({
+            status: true,
+            msg: results
+        })
+    })
+})
 
 module.exports = router;
