@@ -51,10 +51,11 @@ body, html {
 .content-right {
     margin-top: 50px;
     width: 100%;
-    margin-left: 250px;
-    padding: 0 20px;
+
+    padding: 0 20px 0 270px;
 }
-.content-right .flex-header{
+
+.content-right .flex-header {
     width: 100%;
     position: fixed;
     height: 50px;
@@ -64,7 +65,8 @@ body, html {
     z-index: 10;
     padding: 0 20px 0 270px;
 }
-.flex-header > .pull-left>span{
+
+.flex-header > .pull-left > span {
     width: 50px;
     height: 50px;
     line-height: 50px;
@@ -74,12 +76,13 @@ body, html {
     color: white;
 
 }
-.flex-header > .pull-left>span:hover{
+
+.flex-header > .pull-left > span:hover {
     color: #E84C3D;
 }
 
 /*下拉菜单*/
-.flex-header .btn-group>button{
+.flex-header .btn-group > button {
     display: inline-block;
     width: 50px;
     height: 50px;
@@ -90,13 +93,57 @@ body, html {
     border: none;
     outline: none;
 }
-.flex-header .btn-group .dropdown-menu{
+
+.flex-header .btn-group .dropdown-menu {
     left: -120px;
 }
-.flex-header .btn-group.type-two>button{
+
+.flex-header .btn-group.type-two > button {
     width: auto;
     padding: 0 10px;
 }
-.flex-header .btn-group.type-two .dropdown-menu{
+
+.flex-header .btn-group.type-two .dropdown-menu {
     left: -92px;
+}
+
+/*<!--面包屑导航-->*/
+.bread-box > .pull-left {
+    font-size: 30px;
+}
+.bread-box{
+    padding-top: 10px;
+    padding-bottom: 30px;
+}
+.bread-box .breadcrumb{
+    display: inline-block;
+    vertical-align: center;
+    background-color: white;
+}
+.bread-box .breadcrumb li a{
+    color: black;
+}
+.content-right .alert.alert-info{
+    width: 90%;
+    margin: 0 auto;
+    border-left: 4px solid #5BC0DE;
+}
+.content-right .alert.alert-info p{
+    font-size: 20px;
+    color: #5BC0DE;
+    padding-bottom: 10px;
+}
+/*<!--表格-->*/
+.content-right .form{
+    width: 90%;
+    margin: 20px auto 0 auto;
+    border: 2px solid #0A819C;
+    border-radius: 4px;
+}
+.content-right .form p{
+    font-size: 20px;
+    color: white;
+    margin: 0;
+    background-color:#0A819C ;
+    padding: 10px;
 }
