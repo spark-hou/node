@@ -107,15 +107,19 @@ router.get('/article/detail', function (req, res) {
         })
     })
 })
-//获取文章列表
+//获取文章列表--默认按照日期降序排序，分页，pagesize(一页数量),pageindex（第几页）
 router.get('/article/list', function (req, res) {
-    var sql = "SELECT category_id,title from article";
-    pool.query(sql,function (error, results) {
+    var pagesize=parseInt(req.query.pagesize);
+    var pageindex=req.query.pageindex;
+    var offset=pagesize*(pageindex-1);
+    var sql = 'SELECT *,DATE_FORMAT(create_date,\"%Y-%m-%d %T\") AS create_time , DATE_FORMAT(update_date,\"%Y-%m-%d %T\") AS update_time  FROM `article` ORDER BY create_date DESC, update_date DESC limit ? ,offset ?';
+    pool.query(sql,[pagesize,offset],function (error, results) {
         res.json({
             status: true,
             msg: results
         })
     })
 })
+
 
 module.exports = router;

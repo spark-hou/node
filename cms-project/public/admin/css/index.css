@@ -1,0 +1,102 @@
+body, html {
+    width: 100%;
+    min-height: 100%;
+}
+
+.nav-list-left {
+    position: fixed;
+    width: 250px;
+    height: 100%;
+    background-color: #554161;
+    top: 0;
+    left: 0;
+    z-index: 20;
+}
+
+.nav-list-left .nav-title {
+    text-align: center;
+    line-height: 50px;
+    height: 50px;
+    font-weight: bold;
+    font-size: 30px;
+    color: white;
+    background-color: #503D5B;
+}
+
+.nav-list-left .panel-group .panel {
+    margin-bottom: 0;
+    border-radius: 0;
+    background-color: #554161;
+    color: white;
+    border: none;
+}
+
+.nav-list-left .panel-default > .panel-heading {
+    color: white;
+    background-color: #554161;
+    border: none;
+}
+
+.nav-list-left .panel-default > .panel-heading a {
+    display: block;
+    text-decoration: none;
+}
+
+.nav-list-left .panel-default > .panel-heading + .panel-collapse > .panel-body {
+    border: none;
+    background-color: #483752;
+}
+
+/*<!--右边内容-->*/
+.content-right {
+    margin-top: 50px;
+    width: 100%;
+    margin-left: 250px;
+    padding: 0 20px;
+}
+.content-right .flex-header{
+    width: 100%;
+    position: fixed;
+    height: 50px;
+    right: 0;
+    top: 0;
+    background-color: #483752;
+    z-index: 10;
+    padding: 0 20px 0 270px;
+}
+.flex-header > .pull-left>span{
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    display: inline-block;
+    text-align: center;
+    font-size: 13px;
+    color: white;
+
+}
+.flex-header > .pull-left>span:hover{
+    color: #E84C3D;
+}
+
+/*下拉菜单*/
+.flex-header .btn-group>button{
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    color: white;
+    background-color: #483752;
+    border-radius: 0;
+    border: none;
+    outline: none;
+}
+.flex-header .btn-group .dropdown-menu{
+    left: -120px;
+}
+.flex-header .btn-group.type-two>button{
+    width: auto;
+    padding: 0 10px;
+}
+.flex-header .btn-group.type-two .dropdown-menu{
+    left: -92px;
+}
