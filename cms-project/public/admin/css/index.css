@@ -123,12 +123,12 @@ body, html {
 .bread-box .breadcrumb li a{
     color: black;
 }
-.content-right .alert.alert-info{
+.content-right .alert{
     width: 90%;
     margin: 0 auto;
     border-left: 4px solid #5BC0DE;
 }
-.content-right .alert.alert-info p{
+.content-right .alert p{
     font-size: 20px;
     color: #5BC0DE;
     padding-bottom: 10px;

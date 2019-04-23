@@ -47,7 +47,7 @@ router.post('/edit', function (req, res, next) {
     //     users[id - 1].age = age;
     //     res.json(users[(id - 1)]);
     // }
-    var sql = "UPDATE users set username=?,`password`=?,fullname=?,tel=? where user_id=?;"
+    var sql = "UPDATE users set username=?,`password`=?,fullname=?,tel=? where user_id=?";
     pool.query(sql, [req.body.username, req.body.password, req.body.fullname, req.body.tel, req.body.user_id], function (error, results) {
         res.json({
             status: true,
@@ -61,14 +61,19 @@ router.post('/register', function (req, res) {
 
     var sql = "INSERT into users (username,`password`,fullname,tel) VALUES (?,?,?,?)";
     pool.query(sql, [req.body.username, req.body.password, req.body.fullname, req.body.tel], function (error, results, fields) {
-        console.log(error);
+        if (error){
+            res.json({
+                status: false,
+                msg: " 失败"
+            });
+            return;
+        }
         console.log(results);
-        console.log(fields);
         //注册成功
-        res.json({
-            status: true,
-            msg: " 注册成功"
-        });
+            res.json({
+                status: true,
+                msg: " 注册成功"
+            });
     });
 
 })
@@ -121,9 +126,6 @@ router.get('/getlist', function (req, res) {
     })
 
 })
-
-
-
 
 
 module.exports = router;

@@ -1,0 +1,23 @@
+.article-box {
+    border: 2px solid #498C6B;
+    width: 90%;
+    margin: 0 auto;
+    padding: 10px 10px 50px 10px;
+}
+.input-box{
+    margin: 10px 0 0 0;
+}
+.input-box span{
+    font-size: 13px;
+    width: 100px;
+    text-align: right;
+    display: inline-block;
+    margin-right: 20px;
+    vertical-align: top;
+}
+.input-box span i{
+    color: red;
+}
+.input-box input{
+    display: inline-block;
+}

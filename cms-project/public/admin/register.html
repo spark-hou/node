@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>注册</title>
+
+    <!-- Bootstrap -->
+    <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/register-login.css">
+    <!--[endif]-->
+</head>
+<body>
+<div class="panel panel-info">
+    <div class="panel-heading">注册</div>
+    <div class="panel-body">
+        <form class="form">
+            <div class="form-group">
+                <label for="InputUsername">账户</label>
+                <input type="email" class="form-control" id="InputUsername" placeholder="请输入登录用户名/邮箱">
+            </div>
+            <div class="form-group">
+                <label for="InputPassword">密码</label>
+                <input type="password" class="form-control" id="InputPassword" placeholder="请输入登录密码">
+            </div>
+            <div class="form-group">
+                <label for="InputFullname">姓名</label>
+                <input type="text" class="form-control" id="InputFullname" placeholder="请输入姓名">
+            </div>
+            <div class="form-group">
+                <label for="InputTel">手机</label>
+                <input type="number" class="form-control" id="InputTel" placeholder="请输入手机号码">
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" checked="checked"> 同意本站用户协议
+                </label>
+            </div>
+            <button type="button" class="btn btn-primary btn-lg btn-block" id="button">注册</button>
+        </form>
+    </div>
+</div>
+
+<!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+<script src="lib/jquery-3.3.1.min.js"></script>
+<!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+<script src="lib/bootstrap/js/bootstrap.min.js"></script>
+<script>
+    window.onload = function () {
+        var oBtn = document.getElementById('button');
+
+        oBtn.onclick = function () {
+            // 获取value
+            var username = document.getElementById('InputUsername').value;
+            var password = document.getElementById('InputPassword').value;
+            var fullname = document.getElementById('InputFullname').value;
+            var tel = document.getElementById('InputTel').value;
+            //表单验证。。。
+            var flag = true;
+            var regEmail = new RegExp("^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$");
+            if (!regEmail.test(username)) {
+                flag = false;
+                $('#InputUsername').parents('.form-group').addClass('has-error');
+            } else {
+                flag = true;
+                $('#InputUsername').parents('.form-group').removeClass('has-error');
+            }
+            //验证密码
+            if (password.length<6) {
+                flag = false;
+                $('#InputPassword').parents('.form-group').addClass('has-error');
+            } else {
+                flag = true;
+                $('#InputPassword').parents('.form-group').removeClass('has-error');
+            }
+            //用户名验证
+            var regName = /^[\u4E00-\u9FA5]{2,4}$/;
+            if (!regName.test(fullname)) {
+                flag = false;
+                $('#InputFullname').parents('.form-group').addClass('has-error');
+            } else {
+                flag = true;
+                $('#InputFullname').parents('.form-group').removeClass('has-error');
+            }
+            //手机号码验证
+            var regTel = /(^1[3|4|5|7|8|9]\d{9}$)|(^09\d{8}$)/;
+            if (!regTel.test(tel)) {
+                flag = false;
+                $('#InputTel').parents('.form-group').addClass('has-error');
+            } else {
+                flag = true;
+                $('#InputTel').parents('.form-group').removeClass('has-error');
+            }
+            if (flag) {
+                //发送ajax
+                var ajax = new XMLHttpRequest();
+                // 参数配置
+                ajax.open("POST", "http://127.0.0.1:3000/users/register", true);
+                //设置头部
+                ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                //发送数据
+                ajax.send(`username=${username}&password=${password}&fullname=${fullname}&tel=${tel}`);
+                //响应
+                ajax.onreadystatechange = function () {
+                    console.log(ajax.readyState,ajax.responseText);
+                    if (ajax.readyState == 4) {
+                        console.log(ajax.responseText);
+                        var res = JSON.parse(ajax.responseText);
+                        console.log(res)
+                        if (res.status == true) {
+                           window.location.href='index.html'
+                        }
+                    }
+                }
+            }
+        }
+
+
+    }
+</script>
+</body>
+</html>
