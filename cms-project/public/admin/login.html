@@ -63,14 +63,13 @@
                 ajax.open('POST', 'http://127.0.0.1:3000/users/login', true);
                 ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
                 ajax.send(`username=${username}&password=${password}`);
-                console.log(ajax.readyState)
+                console.log(ajax.readyState);
                 ajax.onreadystatechange = function () {
                     if (ajax.readyState == 4) {
                         var res = JSON.parse(ajax.responseText);
-                        if (res.status){
-                            window.location.href='index.html';
-                        }
-                        else {
+                        if (res.status) {
+                            window.location.href = 'index.html';
+                        } else {
                             alert(res.msg);
                         }
                     }
@@ -79,9 +78,14 @@
 
             }
         })
+
+        var ajax2=new XMLHttpRequest();
+        ajax2.open('GET','/users/info?users_id=1',true);
+        ajax2.send();
+
     })
 
-
 </script>
+
 </body>
 </html>

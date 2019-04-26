@@ -15,7 +15,7 @@ var users = [{
 }];
 /* GET users listing. */
 router.get('/info', function (req, res, next) {
-    var sql = "SELECT username,fullname,tel from users WHERE user_id=?";
+    var sql = "SELECT username,fullname,tel from users WHERE users_id=?";
     pool.query(sql, [req.query.id], function (error, results) {
         if (results.length == 0) {
             res.json({
@@ -46,9 +46,11 @@ router.post('/edit', function (req, res, next) {
     //     users[id - 1].username = username;
     //     users[id - 1].age = age;
     //     res.json(users[(id - 1)]);
-    // }
-    var sql = "UPDATE users set username=?,`password`=?,fullname=?,tel=? where user_id=?";
-    pool.query(sql, [req.body.username, req.body.password, req.body.fullname, req.body.tel, req.body.user_id], function (error, results) {
+    // },`password`=? , req.body.password
+    var sql = "UPDATE users set username=?,fullname=?,tel=? where users_id=?";
+    console.log(req.body)
+    pool.query(sql, [req.body.username, req.body.fullname, req.body.tel, req.body.users_id], function (error, results) {
+        console.log(error,results)
         res.json({
             status: true,
             msg: "修改成功"
@@ -61,7 +63,7 @@ router.post('/register', function (req, res) {
 
     var sql = "INSERT into users (username,`password`,fullname,tel) VALUES (?,?,?,?)";
     pool.query(sql, [req.body.username, req.body.password, req.body.fullname, req.body.tel], function (error, results, fields) {
-        if (error){
+        if (error) {
             res.json({
                 status: false,
                 msg: " 失败"
@@ -70,10 +72,10 @@ router.post('/register', function (req, res) {
         }
         console.log(results);
         //注册成功
-            res.json({
-                status: true,
-                msg: " 注册成功"
-            });
+        res.json({
+            status: true,
+            msg: " 注册成功"
+        });
     });
 
 })
@@ -88,7 +90,7 @@ router.post('/login', function (req, res) {
             res.json({
                 status: true,
                 msg: " 登陆成功",
-                uid: results[0].user_id
+                uid: results[0].users_id
             })
         } else {
             res.json({
@@ -103,9 +105,9 @@ router.post('/login', function (req, res) {
 
 //删除账户
 router.post('/delete', function (req, res) {
-    var sql = "DELETE from users WHERE user_id=?";
+    var sql = "DELETE from users WHERE users_id=?";
     console.log(req.body);
-    pool.query(sql, [req.body.user_id], function (error, results) {
+    pool.query(sql, [req.body.users_id], function (error, results) {
         console.log(results);
         res.json({
             status: true,
@@ -116,7 +118,7 @@ router.post('/delete', function (req, res) {
 })
 //获取用户列表
 router.get('/getlist', function (req, res) {
-    var sql = "select user_id,username,fullname,tel from users";
+    var sql = "select users_id,username,fullname,tel from users";
     pool.query(sql, function (error, results) {
         console.log(results);
         res.json({

@@ -18,8 +18,9 @@ router.post('/category/add', function (req, res) {
 
 //删除分类
 router.post('/category/delete', function (req, res) {
-    var sql = "DELETE from category WHERE category_id=?";
-    pool.query(sql, [req.body.category_id], function (error, results) {
+    var sql = "DELETE from category WHERE category_id=? or parent_id=?";
+    console.log(req.body)
+    pool.query(sql, [req.body.category_id, req.body.category_id], function (error, results) {
         res.json({
             status: true,
             msg: "删除成功"
@@ -36,6 +37,26 @@ router.get('/category/getlist', function (req, res) {
         })
     })
 })
+//获取一级分类
+router.get('/category/firstLevel', function (req, res) {
+    var sql = "select * from category where parent_id=0";
+    pool.query(sql, function (error, results) {
+        res.json({
+            status: true,
+            data: results
+        })
+    })
+})
+//获取所有分类
+router.get('/category/getAll', function (req, res) {
+    var sql = "SELECT c1.*,c2.`name` AS parent_name FROM `category` c1 left JOIN category c2 ON c1.parent_id = c2.category_id";
+    pool.query(sql, function (error, results) {
+        res.json({
+            status: true,
+            data: results
+        })
+    })
+})
 //编辑分类
 router.post('/category/edit', function (req, res) {
     var sql = "UPDATE category SET parent_id=? ,`name`=? where category_id=?";
@@ -44,6 +65,23 @@ router.post('/category/edit', function (req, res) {
         res.json({
             status: true,
             msg: "修改成功"
+        })
+    })
+})
+//获取指定id的分类
+router.get('/category/detail', function (req, res) {
+    var sql = "select * from category where category_id=?";
+    pool.query(sql, [req.query.category_id], function (error, results) {
+        if (results.length == 0) {
+            res.json({
+                status: false,
+                msg: '失败'
+            })
+            return;
+        }
+        res.json({
+            status: true,
+            msg: results[0]
         })
     })
 })
@@ -109,11 +147,22 @@ router.get('/article/detail', function (req, res) {
 })
 //获取文章列表--默认按照日期降序排序，分页，pagesize(一页数量),pageindex（第几页）
 router.get('/article/list', function (req, res) {
-    var pagesize=parseInt(req.query.pagesize);
-    var pageindex=req.query.pageindex;
-    var offset=pagesize*(pageindex-1);
-    var sql = 'SELECT *,DATE_FORMAT(create_date,\"%Y-%m-%d %T\") AS create_time , DATE_FORMAT(update_date,\"%Y-%m-%d %T\") AS update_time  FROM `article` ORDER BY create_date DESC, update_date DESC limit ? ,offset ?';
-    pool.query(sql,[pagesize,offset],function (error, results) {
+    var pagesize = parseInt(req.query.pagesize);
+    var pageindex = parseInt(req.query.pageindex);
+    var offset = pagesize * (pageindex - 1);
+    var sql = 'SELECT\n' +
+        '\t*,\n' +
+        '\tDATE_FORMAT( create_date, "%Y-%m-%d %T" ) AS create_time,\n' +
+        '\tDATE_FORMAT( update_date, "%Y-%m-%d %T" ) AS update_time \n' +
+        'FROM\n' +
+        '\t`article` a\n' +
+        '\tLEFT JOIN category b ON a.category_id = b.category_id \n' +
+        'ORDER BY\n' +
+        '\tcreate_date DESC,\n' +
+        '\tupdate_date DESC \n' +
+        '\tLIMIT ? OFFSET ?';
+    pool.query(sql, [pagesize, offset], function (error, results) {
+        console.log(results, error)
         res.json({
             status: true,
             msg: results
