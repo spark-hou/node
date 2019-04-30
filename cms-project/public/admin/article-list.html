@@ -329,7 +329,7 @@
                                 <span class="text-danger">*</span>
                             </label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="" placeholder="请输入文章标题" name="title">
+                                <input type="text" class="form-control" id="title" placeholder="请输入文章标题" name="title">
                             </div>
                         </div>
                         <div class="form-group">
@@ -339,7 +339,7 @@
                             </label>
                             <div class="col-sm-10">
                             <textarea class="form-control" placeholder="博客内容的简单摘要" rows="3"
-                                      name="description"></textarea>
+                                      name="description" id="description"></textarea>
                             </div>
                         </div>
                         <div class="form-group">
@@ -348,7 +348,7 @@
                                 <span class="text-danger">*</span>
                             </label>
                             <div class="col-sm-10">
-                                <select class="form-control" id="parent" name="category_id">
+                                <select class="form-control" id="category_id" name="category_id">
                                 </select>
                             </div>
                         </div>
@@ -442,7 +442,7 @@
                         </td>
                     </tr>`
                 })
-                $('table tbody').append(html)
+                $('table tbody').append(html);
             }
 
         })
@@ -483,6 +483,15 @@
         })
         // 编辑操作
         $("tbody").on("click", ".edit", function () {
+            $.getJSON('/admin/category/firstLevel', function (res) {
+                if (res.status) {
+                    var html = "";
+                    res.data.forEach(function (item) {
+                        html += `<option value="${item.category_id}">${item.name}</option>`;
+                    })
+                    $('#category_id').append(html);
+                }
+            })
             $("#editModal").modal("show");
             // 获取要删除的id
             var uid = $(this).data("id");
@@ -491,7 +500,12 @@
                 article_id: uid
             }, function (result) {
                 if (result.status) {
-                    console.log(result.msg)
+                    $('#title').val(result.msg.title);
+                    $('#description').val(result.msg.description);
+                    $('#category_id').val(result.msg.category_id);
+                    $('.preview img').attr('src',result.msg.main_photo);
+                    $('#main_photo').val(result.msg.main_photo);
+                    editor.txt.html(result.msg.content);
                 }
             })
             $("#editBtn").data("id", uid);
