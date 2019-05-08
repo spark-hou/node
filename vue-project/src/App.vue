@@ -1,29 +1,41 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+    <div id="app">
+        <Login></Login>
+        <ul>
+            <li v-for="(item,index) in list" @click="clickHandle" :key="item">{{item}}</li>
+        </ul>
     </div>
-    <router-view/>
-  </div>
 </template>
+<script>
+    //@是src的缩写
+    import Login from '@/views/Login.vue';
 
-<style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-#nav {
-  padding: 30px;
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-    &.router-link-exact-active {
-      color: #42b983;
+    export default {
+        components: {
+            Login,
+        },
+        data: function () {
+            return {
+                list: [12, 23, 454, 23, 45, 67, 34],
+            };
+        },
+        methods: {
+            clickHandle() {
+                alert('hello world')
+            },
+        },
     }
-  }
-}
+    // Vue.component('app',{})等价于
+</script>
+<style lang="scss">
+    /*公共类*/
+    $blue: #2d8cf0;
+    $fz14: 14px;
+    $fz12: 12px;
+    @import "./assets/lib/font-awesome-4.7.0/css/font-awesome.min.css";
+    html, body {
+        margin: 0;
+        padding: 0;
+    };
+
 </style>
