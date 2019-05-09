@@ -18,14 +18,14 @@
                     商品分类
                 </el-menu-item>
                 <el-menu-item index="1-2">发布商品</el-menu-item>
-                <el-menu-item index="1-3">商品列表</el-menu-item>
+                <el-menu-item index="/goods/list">商品列表</el-menu-item>
             </el-submenu>
             <el-submenu index="2">
                 <template slot="title">
                     <i class="el-icon-menu"></i>
                     <span>商品管理</span>
                 </template>
-                <el-menu-item index="/goods/category">
+                <el-menu-item index="2-1">
                     商品分类
                 </el-menu-item>
                 <el-menu-item index="2-2">发布商品</el-menu-item>
@@ -36,7 +36,7 @@
                     <i class="el-icon-menu"></i>
                     <span>商品管理</span>
                 </template>
-                <el-menu-item index="/goods/category">
+                <el-menu-item index="3-1">
                     商品分类
                 </el-menu-item>
                 <el-menu-item index="3-2">发布商品</el-menu-item>
@@ -47,7 +47,7 @@
                     <i class="el-icon-menu"></i>
                     <span>商品管理</span>
                 </template>
-                <el-menu-item index="/goods/category">
+                <el-menu-item index="4-1">
                     商品分类
                 </el-menu-item>
                 <el-menu-item index="4-2">发布商品</el-menu-item>
