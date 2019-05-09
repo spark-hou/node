@@ -6,11 +6,11 @@
                 <div class="body">
                     <label for="" class="input-box">
                         <i class="fa fa-male"></i>
-                        <input type="text" placeholder="请输入昵称">
+                        <input type="text" placeholder="请输入昵称" v-model="name.value">
                     </label>
                     <label for="" class="input-box">
                         <i class="fa fa-phone"></i>
-                        <input type="text" placeholder="请输入手机号">
+                        <input type="text" placeholder="请输入手机号" v-model="phone.value">
                     </label>
                     <div class="input-box">
                         <i class="fa fa-mars-double"></i>
@@ -23,15 +23,15 @@
                     </div>
                     <label for="" class="input-box">
                         <i class="fa fa-user"></i>
-                        <input type="text" placeholder="请输入账号">
+                        <input type="text" placeholder="请输入账号" v-model="userNum.value">
                     </label>
                     <label for="" class="input-box">
                         <i class="fa fa-lock"></i>
-                        <input type="password" placeholder="请输入密码">
+                        <input type="password" placeholder="请输入密码" v-model="password.value">
                     </label>
-                    <button type="button">注册</button>
+                    <button type="button" @click="registerHandle">注册</button>
                     <div class="link-box">
-                        <a href="">密码登陆</a>
+                        <router-link to="/login">密码登陆</router-link>
                         <a href="">忘记密码？</a>
                     </div>
                 </div>
@@ -43,7 +43,35 @@
 <script>
     export default {
         name: "register",
-        methods:{
+        data: function () {
+            return {
+                name:{
+                  value:'',
+                  flag:false,
+                },
+                password:{
+                    value:'',
+                    flag:false,
+                },
+                userNum:{
+                    value:'',
+                    flag:false,
+                },
+                phone:{
+                    value:'',
+                    flag:false,
+                }
+
+            };
+
+        },
+        methods: {
+            registerHandle() {
+                if (this.name.flag && this.phone.flag && this.password.flag && this.userNum.flag) {
+                    alert('succeed');
+                }
+            },
+
 
         },
     }
@@ -55,7 +83,7 @@
     }
 
     .bg {
-        width: 100vw;
+        width: 100%;
         height: 100vh;
         background-image: url('../assets/img/register/bg.jpg');
         background-size: cover;
@@ -143,8 +171,8 @@
                     color: #999999;
                     justify-content: space-between;
                     margin: 0 auto;
-                    
-                    a{
+
+                    a {
                         text-decoration: none;
                         color: #999999;
                         font-size: 12px;

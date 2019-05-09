@@ -14,7 +14,7 @@
                     </label>
                     <button type="button">登陆</button>
                     <div class="link-box">
-                        <a href="">密码登陆</a>
+                        <router-link to="/register">注册账户</router-link>
                         <a href="">忘记密码？</a>
                     </div>
                 </div>
@@ -25,7 +25,8 @@
 
 <script>
     export default {
-        name: "Login"
+        name: "Login",
+
     }
 </script>
 
@@ -35,7 +36,7 @@
     }
 
     .bg {
-        width: 100vw;
+        width: 100%;
         height: 100vh;
         background-image: url('../assets/img/register/bg.jpg');
         background-size: cover;
