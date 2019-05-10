@@ -5,42 +5,37 @@
             style="width: 100%">
         <el-table-column
                 fixed
+                label="商品名称"
+                width="600">
+            <template slot-scope="scope">
+                <img src="@/assets/img/goods/avator.png" alt="" style="width: 60px;height: 60px">
+                <span style="margin-left: 10px">{{ scope.row.title }}</span>
+            </template>
+        </el-table-column>
+        <el-table-column
+                prop="price"
+                label="价格"
+                width="250">
+        </el-table-column>
+        <el-table-column
+
+                prop="stock"
+                label="库存"
+                width="250">
+        </el-table-column>
+        <el-table-column
+
                 prop="date"
-                label="日期"
-                width="150">
-        </el-table-column>
-        <el-table-column
-                prop="name"
-                label="姓名"
-                width="120">
-        </el-table-column>
-        <el-table-column
-                prop="province"
-                label="省份"
-                width="120">
-        </el-table-column>
-        <el-table-column
-                prop="city"
-                label="市区"
-                width="120">
-        </el-table-column>
-        <el-table-column
-                prop="address"
-                label="地址"
-                width="300">
-        </el-table-column>
-        <el-table-column
-                prop="zip"
-                label="邮编"
-                width="120">
+                label="发布时间"
+                width="250">
         </el-table-column>
         <el-table-column
                 fixed="right"
                 label="操作"
-                width="100">
+                width="150">
             <template slot-scope="scope">
-                <el-button @click="handleClick(scope.row)" type="text" size="small">查看</el-button>
-                <el-button type="text" size="small">编辑</el-button>
+                <el-button @click="handleClick(scope.row)" type="primary" size="small">编辑</el-button>
+                <el-button type="danger" size="small">删除</el-button>
             </template>
         </el-table-column>
     </el-table>
@@ -57,40 +52,42 @@
 
         data() {
             return {
-                tableData: [{
-                    date: '2016-05-02',
-                    name: '王小虎',
-                    province: '上海',
-                    city: '普陀区',
-                    address: '上海市普陀区金沙江路 1518 弄',
-                    zip: 200333
-                }, {
-                    date: '2016-05-04',
-                    name: '王小虎',
-                    province: '上海',
-                    city: '普陀区',
-                    address: '上海市普陀区金沙江路 1517 弄',
-                    zip: 200333
-                }, {
-                    date: '2016-05-01',
-                    name: '王小虎',
-                    province: '上海',
-                    city: '普陀区',
-                    address: '上海市普陀区金沙江路 1519 弄',
-                    zip: 200333
-                }, {
-                    date: '2016-05-03',
-                    name: '王小虎',
-                    province: '上海',
-                    city: '普陀区',
-                    address: '上海市普陀区金沙江路 1516 弄',
-                    zip: 200333
-                }]
+                tableData: [
+                    {
+                        img: '@/assets/img/goods/avator.png',
+                        title: '凤凰牌自行车',
+                        price: '11',
+                        stock: '200',
+                        date: '2019.04.05',
+                    },
+                    {
+                        img: '@/assets/img/goods/avator.png',
+                        title: '凤凰牌自行车',
+                        price: '11',
+                        stock: '200',
+                        date: '2019.04.05',
+                    },
+                    {
+                        img: '@/assets/img/goods/avator.png',
+                        title: '凤凰牌自行车',
+                        price: '11',
+                        stock: '200',
+                        date: '2019.04.05',
+                    },
+                    {
+                        img: '@/assets/img/goods/avator.png',
+                        title: '凤凰牌自行车',
+                        price: '11',
+                        stock: '200',
+                        date: '2019.04.05',
+                    },
+
+                ],
             }
         }
     }
 </script>
 
-<style lang="scss">
+<style lang="scss" >
 
 </style>

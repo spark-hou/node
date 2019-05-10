@@ -11,6 +11,7 @@ import Register from '@/views/Register.vue';
 import Index from '@/views/Index.vue';
 import GoodsCategory from '@/views/goods/Category';
 import GoodsList from '@/views/goods/List';
+import GoodsRelease from '@/views/goods/Release';
 // /**
 //  * 2. 定义路由
 //  * 每个路由应该映射一个组件。
@@ -24,6 +25,7 @@ const routes = [
     {path: '/index', component: Index, name: 'Index',alias: '/',children:[
             {path: '/goods/category', component: GoodsCategory, name: 'GoodsCategory'},
             {path: '/goods/list', component: GoodsList, name: 'GoodsList'},
+            {path: '/goods/release', component: GoodsRelease, name: 'GoodsRelease'},
         ],},
 
 ]

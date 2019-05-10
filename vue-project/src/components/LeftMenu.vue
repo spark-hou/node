@@ -17,7 +17,7 @@
                 <el-menu-item index="/goods/category">
                     商品分类
                 </el-menu-item>
-                <el-menu-item index="1-2">发布商品</el-menu-item>
+                <el-menu-item index="/goods/release">发布商品</el-menu-item>
                 <el-menu-item index="/goods/list">商品列表</el-menu-item>
             </el-submenu>
             <el-submenu index="2">
