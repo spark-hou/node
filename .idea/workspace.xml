@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4d5d46a2-ecd8-4ca4-9073-316fbb14b859" name="默认更改列表" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue-project/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/vue-project/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue-project/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/vue-project/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vue-project/src/components/LeftMenu.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vue-project/src/components/LeftMenu.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue-project/src/router.js" beforeDir="false" afterPath="$PROJECT_DIR$/vue-project/src/router.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue-project/src/views/goods/List.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vue-project/src/views/goods/List.vue" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -20,16 +15,25 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/vue-project/src/views/goods/Release.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="84" column="29" lean-forward="true" selection-start-line="84" selection-start-column="29" selection-end-line="84" selection-end-column="29" />
+            <state relative-caret-position="-4768">
+              <caret line="84" column="29" selection-start-line="84" selection-start-column="29" selection-end-line="84" selection-end-column="29" />
               <folding>
                 <element signature="n#el-form-item#0;n#el-form#0;n#div#0;n#template#0;n#!!top" />
                 <element signature="n#el-form-item#1;n#el-form#0;n#div#0;n#template#0;n#!!top" />
                 <element signature="n#el-form-item#2;n#el-form#0;n#div#0;n#template#0;n#!!top" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/vue-project/src/components/LeftMenu.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="450">
+              <caret line="24" column="27" lean-forward="true" selection-start-line="24" selection-start-column="27" selection-end-line="24" selection-end-column="27" />
             </state>
           </provider>
         </entry>
@@ -62,9 +66,9 @@
         <option value="$PROJECT_DIR$/vue-project/src/components/HeaderBar.vue" />
         <option value="$PROJECT_DIR$/vue-project/src/views/goods/Category.vue" />
         <option value="$PROJECT_DIR$/vue-project/src/router.js" />
-        <option value="$PROJECT_DIR$/vue-project/src/components/LeftMenu.vue" />
         <option value="$PROJECT_DIR$/vue-project/src/views/goods/List.vue" />
         <option value="$PROJECT_DIR$/vue-project/src/views/goods/Release.vue" />
+        <option value="$PROJECT_DIR$/vue-project/src/components/LeftMenu.vue" />
       </list>
     </option>
   </component>
@@ -91,6 +95,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -135,7 +140,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -191,11 +195,12 @@
       <workItem from="1557448851936" duration="11316000" />
       <workItem from="1557468802719" duration="7151000" />
       <workItem from="1557489340254" duration="711000" />
+      <workItem from="1557536120346" duration="1739000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="69699000" />
+    <option name="totallyTimeSpent" value="71438000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -323,13 +328,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/vue-project/src/components/LeftMenu.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="812">
-          <caret line="55" selection-start-line="55" selection-end-line="55" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vue-project/src/views/Index.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
@@ -389,13 +387,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/vue-project/src/views/goods/Release.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="84" column="29" lean-forward="true" selection-start-line="84" selection-start-column="29" selection-end-line="84" selection-end-column="29" />
+        <state relative-caret-position="-4768">
+          <caret line="84" column="29" selection-start-line="84" selection-start-column="29" selection-end-line="84" selection-end-column="29" />
           <folding>
             <element signature="n#el-form-item#0;n#el-form#0;n#div#0;n#template#0;n#!!top" />
             <element signature="n#el-form-item#1;n#el-form#0;n#div#0;n#template#0;n#!!top" />
             <element signature="n#el-form-item#2;n#el-form#0;n#div#0;n#template#0;n#!!top" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vue-project/src/components/LeftMenu.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="24" column="27" lean-forward="true" selection-start-line="24" selection-start-column="27" selection-end-line="24" selection-end-column="27" />
         </state>
       </provider>
     </entry>
