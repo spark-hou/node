@@ -23,7 +23,7 @@
                     <i class="el-icon-s-custom"></i>
                     <span>用户管理</span>
                 </template>
-                <el-menu-item index="2-1">用户列表</el-menu-item>
+                <el-menu-item index="/user/userlist">用户列表</el-menu-item>
                 <el-menu-item index="2-2">发布商品</el-menu-item>
             </el-submenu>
             <el-submenu index="3">
@@ -31,7 +31,7 @@
                     <i class="el-icon-notebook-2"></i>
                     <span>订单管理</span>
                 </template>
-                <el-menu-item index="3-1">订单列表</el-menu-item>
+                <el-menu-item index="/order/orderlist">订单列表</el-menu-item>
                 <el-menu-item index="3-2">发布商品</el-menu-item>
                 <el-menu-item index="3-3">商品列表</el-menu-item>
             </el-submenu>

@@ -2,7 +2,7 @@
     <el-table
             :data="tableData"
             border
-            class="goods-list"
+            class="order-list"
             style="width: 100%">
         <el-table-column
                 fixed
@@ -49,7 +49,7 @@
 
 <script>
     export default {
-        name: "List",
+        name: "OrderList",
         methods: {
             handleClick(row) {
                 console.log(row);
@@ -98,8 +98,8 @@
     }
 </script>
 
-<style lang="scss">
-    .goods-list {
+<style scoped lang="scss">
+    .order-list {
         .title-box {
             display: flex;
             align-items: center;
