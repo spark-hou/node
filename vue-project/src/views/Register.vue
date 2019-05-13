@@ -6,28 +6,30 @@
                 <div class="body">
                     <label for="" class="input-box">
                         <i class="fa fa-male"></i>
-                        <input type="text" placeholder="请输入昵称" v-model="name.value">
+                        <input type="text" placeholder="请输入昵称" v-model="formData.nickname">
                     </label>
                     <label for="" class="input-box">
                         <i class="fa fa-phone"></i>
-                        <input type="text" placeholder="请输入手机号" v-model="phone.value">
+                        <input type="text" placeholder="请输入手机号" v-model="formData.tel">
                     </label>
                     <div class="input-box">
                         <i class="fa fa-mars-double"></i>
                         <div class="sex-box">
-                            <span><input type="radio" name="1" checked id="man"> <i class="fa fa-mars"></i><label
+                            <span><input type="radio" name="1" checked id="man" value="男" v-model="formData.sex"> <i
+                                    class="fa fa-mars"></i><label
                                     for="man">男</label></span>
-                            <span><input type="radio" name="1" id="woman"><i class="fa fa-venus"></i> <label
+                            <span><input type="radio" name="1" id="woman" value="女" v-model="formData.sex"><i
+                                    class="fa fa-venus"></i> <label
                                     for="woman">女</label></span>
                         </div>
                     </div>
                     <label for="" class="input-box">
                         <i class="fa fa-user"></i>
-                        <input type="text" placeholder="请输入账号" v-model="userNum.value">
+                        <input type="text" placeholder="请输入账号" v-model="formData.username">
                     </label>
                     <label for="" class="input-box">
                         <i class="fa fa-lock"></i>
-                        <input type="password" placeholder="请输入密码" v-model="password.value">
+                        <input type="password" placeholder="请输入密码" v-model="formData.password">
                     </label>
                     <button type="button" @click="registerHandle">注册</button>
                     <div class="link-box">
@@ -45,33 +47,44 @@
         name: "register",
         data: function () {
             return {
-                name:{
-                  value:'',
-                  flag:false,
+                formData: {
+                    username: '',
+                    password: '',
+                    nickname: '',
+                    sex: '男',
+                    tel: '',
                 },
-                password:{
-                    value:'',
-                    flag:false,
-                },
-                userNum:{
-                    value:'',
-                    flag:false,
-                },
-                phone:{
-                    value:'',
-                    flag:false,
-                }
 
             };
 
         },
         methods: {
             registerHandle() {
-                if (this.name.flag && this.phone.flag && this.password.flag && this.userNum.flag) {
-                    alert('succeed');
-                }
-            },
+                // 表单验证
+                console.log({...this.formData});
+                this.$http.post('/api/user/register', {
+                    ...this.formData
 
+                }).then((res) => {
+                    console.log(res.data);
+                    if (res.data.status) {
+                        //存储token
+                        sessionStorage.token=res.data.data.token;
+                        sessionStorage.uid=res.data.data.id;
+                        //跳转
+
+                        this.$message({
+                            message:res.data.msg,
+                            onClose:()=>{
+                                this.$router.push({name: 'Index'});
+                            },
+                        });
+                    } else {
+                        this.$message(res.data.msg);
+                    }
+                });
+                1
+            },
 
         },
     }

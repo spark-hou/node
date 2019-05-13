@@ -6,13 +6,13 @@
                 <div class="body">
                     <label for="" class="input-box">
                         <i class="fa fa-user"></i>
-                        <input type="text" placeholder="请输入昵称">
+                        <input type="text" placeholder="请输入昵称" v-model="formData.username">
                     </label>
                     <label for="" class="input-box">
                         <i class="fa fa-key"></i>
-                        <input type="password" placeholder="请输入密码">
+                        <input type="password" placeholder="请输入密码" v-model="formData.password">
                     </label>
-                    <button type="button">登陆</button>
+                    <button type="button" @click="loginHandle">登陆</button>
                     <div class="link-box">
                         <router-link to="/register">注册账户</router-link>
                         <a href="">忘记密码？</a>
@@ -26,7 +26,39 @@
 <script>
     export default {
         name: "Login",
+        data() {
+            return {
+                formData: {
+                    username: '',
+                    password: '',
+                },
+            };
+        },
+        methods: {
+            loginHandle() {
+                //表单验证
+                this.$http.post('/api/user/login', {
+                    ...this.formData
+                }).then((res) => {
+                    console.log(res)
+                    if (res.data.status){
+                        //存储token
+                        sessionStorage.token=res.data.data.token;
+                        sessionStorage.uid=res.data.data.id;
+                        //跳转
+                        this.$message({
+                            message:res.data.msg,
+                            onClose:()=>{
+                                this.$router.push({name: 'Index'});
+                            },
 
+                        });
+                    }else {
+                        this.$message(res.data.msg);
+                    }
+                })
+            },
+        },
     }
 </script>
 
@@ -112,7 +144,7 @@
                     justify-content: space-between;
                     margin: 0 auto;
 
-                    a{
+                    a {
                         text-decoration: none;
                         color: #999999;
                         font-size: 12px;

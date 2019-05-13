@@ -9,7 +9,7 @@
         </div>
         <el-row class="search-box">
             <el-col :span="3">
-                <el-input v-model="input" placeholder="请输入内容"></el-input>
+                <el-input v-model="search" placeholder="请输入内容"></el-input>
             </el-col>
             <el-col :span="2">
                 <el-button type="primary" class="searchBtn">查询</el-button>
@@ -33,31 +33,31 @@
                 <img src="@/assets/logo.png" alt="" class="avatar">
             </el-table-column>
             <el-table-column
-                    prop="num"
+                    prop="username"
                     label="账号"
                     sortable
                     width="280">
             </el-table-column>
             <el-table-column
-                    prop="nickName"
+                    prop="nickname"
                     label="昵称"
                     sortable
                     width="180"
-                    :formatter="formatter">
+            >
             </el-table-column>
             <el-table-column
                     prop="sex"
                     label="性别"
                     sortable
                     width="180"
-                    :formatter="formatter">
+            >
             </el-table-column>
             <el-table-column
                     prop="tel"
                     label="电话"
                     sortable
                     width="280"
-                    :formatter="formatter">
+            >
             </el-table-column>
         </el-table>
     </div>
@@ -68,44 +68,24 @@
         name: "UserList",
         data() {
             return {
-                tableData: [{
-                    id: 1,
-                    date: '2016-05-02',
-                    name: '王小虎',
-                    address: '上海市普陀区金沙江路 1518 弄',
-                    num:'13112312412414',
-                    nickName:'asda',
-                    sex:'男',
-                    tel:'1313131313',
-                }, {
-                    id: 2,
-                    date: '2016-05-04',
-                    name: '王小虎',
-                    address: '上海市普陀区金沙江路 1517 弄',
-                    num:'13112312412414',
-                    nickName:'asda',
-                    sex:'男',
-                    tel:'1313131313',
-                }, {
-                    id: 3,
-                    date: '2016-05-01',
-                    name: '王小虎',
-                    address: '上海市普陀区金沙江路 1519 弄',
-                    num:'13112312412414',
-                    nickName:'asda',
-                    sex:'男',
-                    tel:'1313131313',
-                }, {
-                    id: 4,
-                    date: '2016-05-03',
-                    name: '王小虎',
-                    address: '上海市普陀区金沙江路 1516 弄',
-                    num:'13112312412414',
-                    nickName:'asda',
-                    sex:'男',
-                    tel:'1313131313',
-                }]
+                search: '',
+                tableData: [
+
+                ],
             };
+        },
+        methods: {
+            getUserList() {
+                this.$http.get('/api/user/list', {
+                    headers:{Authorization: `Bearer ${sessionStorage.token}`},
+                }).then((res)=>{
+                    console.log(res);
+                    this.tableData=[...res.data.data];
+                })
+            },
+        },
+        created() {
+            this.getUserList();
         },
     }
 </script>

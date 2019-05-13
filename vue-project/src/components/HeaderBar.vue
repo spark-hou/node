@@ -5,14 +5,36 @@
             <i class="el-icon-menu"></i>
         </div>
         <div class="right">
-            <img src="@/assets/img/goods/avator.png" alt="">
+            <span>{{userInfo.nickname}}</span>
+            <img :src="userInfo.avatar" alt="">
         </div>
     </div>
 </template>
 
 <script>
     export default {
-        name: "HeaderBar"
+        name: "HeaderBar",
+        data() {
+            return {
+                userInfo:{},
+            };
+        },
+        methods: {
+            load() {
+                this.$http.get('/api/user/info', {
+                    headers:{Authorization: `Bearer ${sessionStorage.token}`},
+                    params: {
+                      uid:sessionStorage.uid,
+                    },
+                }).then((res)=>{
+                    this.userInfo={...res.data.data};
+                    console.log(this.userInfo)
+                })
+            },
+        },
+        created() {
+            this.load();
+        },
     }
 </script>
 
