@@ -26,11 +26,14 @@
                     width="80">
             </el-table-column>
             <el-table-column
-                    prop="img"
+
                     label="头像"
                     sortable
                     width="180">
-                <img src="@/assets/logo.png" alt="" class="avatar">
+                <template slot-scope="scope">
+                    <img :src="scope.row.avatar" alt="" class="avatar">
+                </template>
+
             </el-table-column>
             <el-table-column
                     prop="username"
@@ -77,10 +80,11 @@
         methods: {
             getUserList() {
                 this.$http.get('/api/user/list', {
-                    headers:{Authorization: `Bearer ${sessionStorage.token}`},
+                    //在axios的拦截器里添加了头部
+                    // headers:{Authorization: `Bearer ${sessionStorage.token}`},
                 }).then((res)=>{
-                    console.log(res);
-                    this.tableData=[...res.data.data];
+                    console.log('设置拦截器之后的res', res);
+                    this.tableData=[...res.data];
                 })
             },
         },

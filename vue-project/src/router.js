@@ -22,21 +22,45 @@ import OrderOrderList from '@/views/order/OrderList';
 //  */
 
 const routes = [
-    {path: '/login', component: Login, name: 'Login'},
+    {path: '/login', component: Login,props:(route)=>route.query, name: 'Login', alias: '/'},
     {path: '/register', component: Register, name: 'Register'},
-    {path: '/index', component: Index, name: 'Index',alias: '/',children:[
-            {path: '/goods/category', component: GoodsCategory, name: 'GoodsCategory'},
-            {path: '/goods/list', component: GoodsList, name: 'GoodsList'},
-            {path: '/goods/release', component: GoodsRelease, name: 'GoodsRelease'},
-            {path: '/user/userlist', component: UserUserList, name: 'UserUserList'},
-            {path: '/order/orderlist', component: OrderOrderList, name: 'OrderOrderList'},
-        ],},
+    {
+        path: '/index', component: Index, meta: {requiresAuth: true}, name: 'Index', children: [
+            {path: '/goods/category', meta: {requiresAuth: true}, component: GoodsCategory, name: 'GoodsCategory'},
+            {path: '/goods/list', meta: {requiresAuth: true}, component: GoodsList, name: 'GoodsList'},
+            {path: '/goods/release', meta: {requiresAuth: true}, component: GoodsRelease, name: 'GoodsRelease'},
+            {path: '/user/userlist', meta: {requiresAuth: true}, component: UserUserList, name: 'UserUserList'},
+            {path: '/order/orderlist', meta: {requiresAuth: true}, component: OrderOrderList, name: 'OrderOrderList'},
+        ],
+    },
 
-]
+];
 
 // 3. 创建 router 实例，然后传 `routes` 配置。
 const router = new Router({
     routes // (缩写) 相当于 routes: routes
-})
+});
+//4.全局路由守卫
+router.beforeEach((to, from, next) => {
+    // console.log('路由守卫', 'to',to,'from', from, next);
+    if (to.matched.some(record => record.meta.requiresAuth)) {
+        //如果没有session，返回登录页
+        if (!sessionStorage.token) {
+            alert('未登录');
+            next({
+                path: '/login',
+                query: {
+                  redirect:to.fullPath,
+                },
+            });
+            return;
+        }
+        //登陆登陆
+        next();
+    } else {
+        next() // 确保一定要调用 next()
+    }
 
+
+});
 export default router

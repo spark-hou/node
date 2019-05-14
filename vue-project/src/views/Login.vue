@@ -26,6 +26,7 @@
 <script>
     export default {
         name: "Login",
+        props: ['redirect',],
         data() {
             return {
                 formData: {
@@ -40,24 +41,33 @@
                 this.$http.post('/api/user/login', {
                     ...this.formData
                 }).then((res) => {
-                    console.log(res)
-                    if (res.data.status){
+                    console.log('设置拦截器之后的res', res);
+                    if (res.status) {
                         //存储token
-                        sessionStorage.token=res.data.data.token;
-                        sessionStorage.uid=res.data.data.id;
+                        sessionStorage.token = res.data.token;
+                        sessionStorage.uid = res.data.id;
                         //跳转
                         this.$message({
-                            message:res.data.msg,
-                            onClose:()=>{
-                                this.$router.push({name: 'Index'});
+                            message: res.msg,
+                            onClose: () => {
+                                console.log('query信息',this.$route.query.redirect);
+                                if (this.$route.query.redirect) {
+                                    this.$router.push({path:this.redirect});
+                                } else {
+                                    this.$router.push({name: 'Index'});
+                                }
+                                // this.$router.push({name: 'Index'});
                             },
 
                         });
-                    }else {
-                        this.$message(res.data.msg);
+                    } else {
+                        this.$message(res.msg);
                     }
                 })
             },
+        },
+        created() {
+            console.log(this.$route.query,this.redirect)
         },
     }
 </script>

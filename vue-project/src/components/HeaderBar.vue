@@ -22,12 +22,11 @@
         methods: {
             load() {
                 this.$http.get('/api/user/info', {
-                    headers:{Authorization: `Bearer ${sessionStorage.token}`},
                     params: {
                       uid:sessionStorage.uid,
                     },
                 }).then((res)=>{
-                    this.userInfo={...res.data.data};
+                    this.userInfo={...res.data};
                     console.log(this.userInfo)
                 })
             },
