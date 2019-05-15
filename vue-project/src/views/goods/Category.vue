@@ -2,43 +2,67 @@
     <div class="category-box">
         <div class="block">
             <p>分类</p>
-            <el-tree :data="data"
-                     node-key="id"
-                     :props="defaultProps"
-                     :load="loadNode"
-                     lazy
-
-                     :expand-on-click-node="false">
-                <span class="custom-tree-node" slot-scope="{ node, data }">
+            <el-tree
+                    node-key="id"
+                    :props="defaultProps"
+                    :load="loadNode"
+                    lazy
+                    :expand-on-click-node="true">
+           <span class="custom-tree-node" slot-scope="{ node, data }">
                  <span>{{ node.label }}</span>
           <span>
-          <el-button type="text" size="mini" @click="editModel = true">编辑</el-button>
-          <el-button type="text" size="mini" @click="">添加</el-button>
-          <el-button type="text" size="mini" @click="">删除</el-button>
+          <el-button type="text" size="mini" @click.stop="editHandle(node,data)">编辑</el-button>
+          <el-button type="text" size="mini" @click.stop="openAddHandle(node,data)">添加</el-button>
+          <el-button type="text" size="mini" @click.stop="delHandle(node, data)">删除</el-button>
         </span>
          </span>
             </el-tree>
         </div>
 
         <el-dialog title="编辑节点" :visible.sync="editModel">
-            <el-form :model="form" label-width="80px">
+            <el-form label-width="80px">
                 <el-form-item label="活动名称">
-                    <el-input v-model="form.name"></el-input>
+                    <el-input v-model="editForm.name"></el-input>
                 </el-form-item>
                 <el-upload
                         class="avatar-uploader"
                         action="https://jsonplaceholder.typicode.com/posts/"
                         :show-file-list="false"
-                        :on-success="handleAvatarSuccess"
-                        :before-upload="beforeAvatarUpload">
-                    <img v-if="imageUrl" :src="imageUrl" class="avatar">
+                        :on-success="uploadSuccess2"
+                        :headers="headers"
+                        :before-upload="beforeUpload2">
+                    <img v-if="editForm.img" :src="editForm.img" class="avatar">
                     <i v-else class="el-icon-plus avatar-uploader-icon"></i>
                 </el-upload>
             </el-form>
 
             <div slot="footer" class="dialog-footer">
                 <el-button @click="editModel = false">取 消</el-button>
-                <el-button type="primary" @click="editModel = false">确 定</el-button>
+                <el-button type="primary" @click="confirmEditHandle">确 定</el-button>
+            </div>
+        </el-dialog>
+        <el-dialog title="添加节点" :visible.sync="addModel">
+            <el-form label-width="80px">
+                <el-form-item label="活动名称">
+                    <el-input v-model="addForm.name"></el-input>
+                </el-form-item>
+                <el-upload
+                        class="avatar-uploader"
+                        action="/api/upload/common"
+                        :show-file-list="false"
+                        :on-success="uploadSuccess"
+                        :headers="headers"
+                        node-key="id"
+                        updateKeyChildren
+                        :before-upload="beforeUpload">
+                    <img v-if="addForm.img" :src="addForm.img" class="avatar">
+                    <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+                </el-upload>
+            </el-form>
+
+            <div slot="footer" class="dialog-footer">
+                <el-button @click="addModel = false">取 消</el-button>
+                <el-button type="primary" @click="confirmAddHandle">确 定</el-button>
             </div>
         </el-dialog>
     </div>
@@ -54,23 +78,22 @@
                     children: 'children',
                     label: 'name'
                 },
-                data: [
-                    {
-                        id: 1,
-                        name: '全部分类',
-                        children: [
-                            {
-                                id: 2,
-                                name: '111',
-                            },
-                            {
-                                id: 3,
-                                name: '111',
-                            },
-                        ],
-                    },
-                ],
+                currentNodeData: [],
+                headers: {
+                    Authorization: `Bearer ${sessionStorage.token}`,
+                },
+                addForm: {
+                    name: '',
+                    img: '',
+                    pId: '',
+                },
+                editForm: {
+                    name: '',
+                    img: '',
+                    id: '',
+                },
                 editModel: false,
+                addModel: false,
                 form: {
                     name: '',
                 },
@@ -78,14 +101,6 @@
             };
         },
         methods: {
-            append(data, value) {
-                const newChild = {id: id++, label: value, children: []};
-                if (!data.children) {
-                    this.$set(data, 'children', []);
-                }
-                data.children.push(newChild);
-            },
-
             remove(node, data) {
                 const parent = node.parent;
                 const children = parent.data.children || parent.data;
@@ -99,41 +114,100 @@
                     cancelButtonText: '取消',
                     type: 'warning'
                 }).then(() => {
-                    this.remove(node, data);
-                }).catch(() => {
-                    this.$message({
-                        type: 'info',
-                        message: '已取消删除'
+                    this.$http.post('/api/category/delete', {
+                            id: data.id,
+                    })
+                })
+                    .then((res)=>{
+                        console.log(res);
+                    })
+                    .catch(() => {
+                        this.$message({
+                            type: 'info',
+                            message: '已取消删除'
+                        });
                     });
+            },
+            //打开添加窗口，获取pid
+            openAddHandle(node, data) {
+                this.addModel = true;
+                this.addForm.pId = data.id;
+                //转存data
+                this.currentNodeData = data;
+
+            },
+            //确定添加节点
+            confirmAddHandle() {
+                //表单验证
+                this.$http.post('/api/category/add', {
+                    ...this.addForm
+                }).then((res) => {
+                    if (res.status) {
+                        this.$message(res.msg);
+                    }
+                    let newChild = {...this.addForm, id: res.data.id};
+                    this.$set(this.currentNodeData, 'children', []);
+                    this.currentNodeData.children.push(newChild);
+                    this.addModel = false;
+                    this.addForm = {
+                        name: '',
+                        img: '',
+                        pId: '',
+                    };
                 });
             },
-            addHandle(data) {
-                this.$prompt('添加内容', '提示', {
-                    confirmButtonText: '确定',
-                    cancelButtonText: '取消',
-                    inputPattern: /^(\d|[\u4e00-\u9fa5]|[a-z0-9\$#@=\.]){1,10}$/,
-                    inputErrorMessage: '1-10个字符'
-                }).then(({value}) => {
-                    this.append(data, value);
-                }).catch(() => {
-                    this.$message({
-                        type: 'info',
-                        message: '取消输入'
-                    });
-                });
-            },
+            //打开编辑窗口
             editHandle(node, data) {
-                console.log(node)
+                this.editModel = true;
+                console.log(data);
+                //转存数据
+                this.editForm.name = data.name;
+                this.editForm.id = data.id;
+                this.editForm.img = data.img;
+                this.currentNodeData = data;
             },
-            handleAvatarSuccess(res, file) {
-                this.imageUrl = URL.createObjectURL(file.raw);
+            //提交修改内容
+            confirmEditHandle() {
+                this.$http.post('/api/category/update', {
+                    ...this.editForm
+                }).then((res) => {
+                    this.$message(res.msg);
+                    this.editModel = false;
+                    this.currentNodeData.name = this.editForm.name;
+                    this.currentNodeData.img = this.editForm.img;
+                    this.editForm = {
+                        name: '',
+                        img: '',
+                        id: '',
+                    };
+                })
             },
-            beforeAvatarUpload(file) {
-                const isJPG = file.type === 'image/jpeg';
+            uploadSuccess(res, file) {
+                this.addForm.img = res.data[0];
+
+            },
+            uploadSuccess2(res, file) {
+                this.editForm.img = res.data[0];
+
+            },
+            beforeUpload(file) {
+                const isJPG = file.type === 'image/jpeg' || 'image/png';
                 const isLt2M = file.size / 1024 / 1024 < 2;
 
                 if (!isJPG) {
-                    this.$message.error('上传头像图片只能是 JPG 格式!');
+                    this.$message.error('上传头像图片只能是 JPG/PNG 格式!');
+                }
+                if (!isLt2M) {
+                    this.$message.error('上传头像图片大小不能超过 2MB!');
+                }
+                return isJPG && isLt2M;
+            },
+            beforeUpload2(file) {
+                const isJPG = file.type === 'image/jpeg' || 'image/png';
+                const isLt2M = file.size / 1024 / 1024 < 2;
+
+                if (!isJPG) {
+                    this.$message.error('上传头像图片只能是 JPG/PNG 格式!');
                 }
                 if (!isLt2M) {
                     this.$message.error('上传头像图片大小不能超过 2MB!');
@@ -142,7 +216,7 @@
             },
             loadNode(node, resolve) {
                 if (node.level === 0) {
-                    return resolve([{ name: '全部节点',id:1 }]);
+                    return resolve([{name: '全部节点', id: 1}]);
                 }
                 console.log(node);
                 this.$http.get('/api/category/sub', {
@@ -153,6 +227,7 @@
                     resolve(res.data)
                 })
             },
+
 
         },
 

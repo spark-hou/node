@@ -68,10 +68,9 @@ router.post("/category/add", function(req, res) {
  * @apiSampleRequest /api/category/delete/
  */
 router.post("/category/delete", function(req, res) {
-    let sql = `
-	SELECT img FROM categories WHERE id = ?;
-	DELETE FROM CATEGORIES WHERE id = ?`;
+    let sql = `SELECT img FROM categories WHERE id = ?;DELETE FROM CATEGORIES WHERE id = ?`;
     db.query(sql, [req.body.id, req.body.id], function(results, fields) {
+        console.log(req.body)
         let src = '.' + results[0][0].img;
         let realPath = path.resolve(__dirname, '../public/', src);
         fs.unlink(realPath, function(err) {
@@ -102,6 +101,7 @@ router.post("/category/update", function(req, res) {
     let sql = `UPDATE CATEGORIES SET name = ? , img = ? WHERE id = ? `;
     db.query(sql, [req.body.name, req.body.img, req.body.id], function(results, fields) {
         //成功
+        console.log(req.body);
         res.json({
             status: true,
             msg: "success!"

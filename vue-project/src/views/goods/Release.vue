@@ -11,21 +11,33 @@
         <el-form ref="form" :model="form" :rules="rules" label-width="100px" class="page-form" label-position="left">
             <el-form-item label="商品分类">
                 <el-col :span="4">
-                    <el-select v-model="form.region" placeholder="请选择活动区域" class="page-select">
-                        <el-option label="区域一" value="shanghai"></el-option>
-                        <el-option label="区域二" value="beijing"></el-option>
+                    <el-select v-model="form.firstClassValue" placeholder="请选择" class="page-select" @change="getSecondClass">
+                        <el-option
+                                v-for="item in firstClass"
+                                :key="item.id"
+                                :label="item.name"
+                                :value="item.id">
+                        </el-option>
                     </el-select>
                 </el-col>
                 <el-col :span="4">
-                    <el-select v-model="form.region" placeholder="请选择活动区域" class="page-select">
-                        <el-option label="区域一" value="shanghai"></el-option>
-                        <el-option label="区域二" value="beijing"></el-option>
+                    <el-select  v-model="form.secondClassValue" placeholder="请选择" class="page-select" @change="getThirdClass">
+                        <el-option
+                                v-for="item in secondClass"
+                                :key="item.id"
+                                :label="item.name"
+                                :value="item.id">
+                        </el-option>
                     </el-select>
                 </el-col>
                 <el-col :span="4">
-                    <el-select v-model="form.region" placeholder="请选择活动区域" class="page-select">
-                        <el-option label="区域一" value="shanghai"></el-option>
-                        <el-option label="区域二" value="beijing"></el-option>
+                    <el-select v-model="form.thirdClassValue"  placeholder="请选择" class="page-select">
+                        <el-option
+                                v-for="item in thirdClass"
+                                :key="item.id"
+                                :label="item.name"
+                                :value="item.id">
+                        </el-option>
                     </el-select>
                 </el-col>
             </el-form-item>
@@ -228,26 +240,26 @@
                     class="alert-box"
                     :closable="false">
             </el-alert>
-            <el-form-item label="所在地">
-                <el-col :span="4">
-                    <el-select v-model="form.region" placeholder="请选择活动区域" class="page-select">
-                        <el-option label="区域一" value="shanghai"></el-option>
-                        <el-option label="区域二" value="beijing"></el-option>
-                    </el-select>
-                </el-col>
-                <el-col :span="4">
-                    <el-select v-model="form.region" placeholder="请选择活动区域" class="page-select">
-                        <el-option label="区域一" value="shanghai"></el-option>
-                        <el-option label="区域二" value="beijing"></el-option>
-                    </el-select>
-                </el-col>
-                <el-col :span="4">
-                    <el-select v-model="form.region" placeholder="请选择活动区域" class="page-select">
-                        <el-option label="区域一" value="shanghai"></el-option>
-                        <el-option label="区域二" value="beijing"></el-option>
-                    </el-select>
-                </el-col>
-            </el-form-item>
+<!--            <el-form-item label="所在地">-->
+<!--                <el-col :span="4">-->
+<!--                    <el-select  placeholder="请选择" class="page-select">-->
+<!--                        <el-option label="区域一" value="shanghai"></el-option>-->
+<!--                        <el-option label="区域二" value="beijing"></el-option>-->
+<!--                    </el-select>-->
+<!--                </el-col>-->
+<!--                <el-col :span="4">-->
+<!--                    <el-select placeholder="请选择" class="page-select">-->
+<!--                        <el-option label="区域一" value="shanghai"></el-option>-->
+<!--                        <el-option label="区域二" value="beijing"></el-option>-->
+<!--                    </el-select>-->
+<!--                </el-col>-->
+<!--                <el-col :span="4">-->
+<!--                    <el-select placeholder="请选择" class="page-select">-->
+<!--                        <el-option label="区域一" value="shanghai"></el-option>-->
+<!--                        <el-option label="区域二" value="beijing"></el-option>-->
+<!--                    </el-select>-->
+<!--                </el-col>-->
+<!--            </el-form-item>-->
             <el-form-item label="运费">
                 <el-row>
                     <el-col :span="3">
@@ -282,6 +294,7 @@
         },
         data() {
             return {
+
                 form: {
                     name: '',
                     sellingPoint: '',
@@ -290,7 +303,10 @@
                     delivery: false,
                     type: [],
                     resource: '',
-                    desc: ''
+                    desc: '',
+                    firstClassValue:'',
+                    secondClassValue:'',
+                    thirdClassValue:'',
                 },
                 rules: {
                     name: [
@@ -298,15 +314,17 @@
                         {min: 3, max: 200, message: '长度在 3 到 200 个字符', trigger: 'blur'}
                     ],
                     sellingPoint: [
-                        {required: true,min: 1, max: 140, message: '长度在 1 到 140 个字符', trigger: 'blur'}
+                        {required: true, min: 1, max: 140, message: '长度在 1 到 140 个字符', trigger: 'blur'}
                     ],
-                    goodPrice:[
-
-                    ],
+                    goodPrice: [],
                 },
                 imageUrl: '',
                 dialogImageUrl: '',
                 dialogVisible: false,
+                firstClass: {},
+                secondClass:{},
+                thirdClass:{},
+
 
             };
         },
@@ -333,6 +351,47 @@
                 this.dialogImageUrl = file.url;
                 this.dialogVisible = true;
             },
+            getFirstClass() {
+                this.$http.get('/api/category/sub', {
+                    params: {
+                        pId: 1,
+                    },
+                }).then((res) => {
+                    this.firstClass=res.data;
+                    console.log(this.firstClass)
+                });
+            },
+            getSecondClass() {
+                this.secondClass={};
+                this.form.secondClassValue='';
+                this.thirdClass={};
+                this.form.thirdClassValue='';
+
+                this.$http.get('/api/category/sub', {
+                    params: {
+                        pId: this.form.firstClassValue,
+                    },
+                }).then((res) => {
+                    this.secondClass=res.data;
+
+                });
+            },
+            getThirdClass() {
+                this.thirdClass={};
+                this.form.thirdClassValue='';
+                this.$http.get('/api/category/sub', {
+                    params: {
+                        pId: this.form.secondClassValue,
+                    },
+                }).then((res) => {
+                    this.thirdClass=res.data;
+
+                });
+            },
+
+        },
+        created() {
+            this.getFirstClass();
         },
     }
 </script>

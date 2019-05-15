@@ -26,8 +26,9 @@
                       uid:sessionStorage.uid,
                     },
                 }).then((res)=>{
+                    console.log(res)
                     this.userInfo={...res.data};
-                    console.log(this.userInfo)
+
                 })
             },
         },
