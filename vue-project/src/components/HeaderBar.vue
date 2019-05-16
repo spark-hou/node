@@ -2,7 +2,8 @@
     <div class="header-container">
         <div class="left">
             <img src="@/assets/img/goods/logo.png" alt="">
-            <i class="el-icon-menu"></i>
+            <i class="el-icon-menu" @click="Collapse"></i>
+
         </div>
         <div class="right">
             <span>{{userInfo.nickname}}</span>
@@ -12,6 +13,7 @@
 </template>
 
 <script>
+    import {mapState} from 'vuex';
     export default {
         name: "HeaderBar",
         data() {
@@ -26,15 +28,19 @@
                       uid:sessionStorage.uid,
                     },
                 }).then((res)=>{
-                    console.log(res)
+                    console.log(res);
                     this.userInfo={...res.data};
 
                 })
             },
+            Collapse(){
+                this.$store.commit('Collapse')
+            }
         },
         created() {
             this.load();
         },
+        computed:mapState(['isCollapse']),
     }
 </script>
 

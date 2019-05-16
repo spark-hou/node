@@ -24,6 +24,7 @@
 </template>
 
 <script>
+    import {mapActions}from'vuex'
     export default {
         name: "Login",
         props: ['redirect',],
@@ -36,34 +37,40 @@
             };
         },
         methods: {
-            loginHandle() {
-                //表单验证
-                this.$http.post('/api/user/login', {
-                    ...this.formData
-                }).then((res) => {
-                    console.log('设置拦截器之后的res', res);
-                    if (res.status) {
-                        //存储token
-                        sessionStorage.token = res.data.token;
-                        sessionStorage.uid = res.data.id;
-                        //跳转
-                        this.$message({
-                            message: res.msg,
-                            onClose: () => {
-                                console.log('query信息',this.$route.query.redirect);
-                                if (this.$route.query.redirect) {
-                                    this.$router.push({path:this.redirect});
-                                } else {
-                                    this.$router.push({name: 'Index'});
-                                }
-                                // this.$router.push({name: 'Index'});
-                            },
+            // loginHandle() {
+            //     //表单验证
+            //     this.$http.post('/api/user/login', {
+            //         ...this.formData
+            //     }).then((res) => {
+            //         console.log('设置拦截器之后的res', res);
+            //         if (res.status) {
+            //             //存储token,role(1:超管，2普管，3：运营)
+            //             sessionStorage.token = res.data.token;
+            //             sessionStorage.uid = res.data.id;
+            //             sessionStorage.role=res.data.role;
+            //             //跳转
+            //             this.$message({
+            //                 message: res.msg,
+            //                 onClose: () => {
+            //                     console.log('query信息',this.$route.query.redirect);
+            //                     if (this.$route.query.redirect) {
+            //                         this.$router.push({path:this.redirect});
+            //                     } else {
+            //                         this.$router.push({name: 'Index'});
+            //                     }
+            //                     // this.$router.push({name: 'Index'});
+            //                 },
+            //
+            //             });
+            //         } else {
+            //             this.$message(res.msg);
+            //         }
+            //     })
+            // },
+            loginHandle(){
 
-                        });
-                    } else {
-                        this.$message(res.msg);
-                    }
-                })
+              this.$store.dispatch('Login',{...this.formData})
+
             },
         },
         created() {

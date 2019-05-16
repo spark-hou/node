@@ -11,7 +11,7 @@
         <el-form ref="form" :model="form" :rules="rules" label-width="100px" class="page-form" label-position="left">
             <el-form-item label="商品分类">
                 <el-col :span="4">
-                    <el-select v-model="form.firstClassValue" placeholder="请选择" class="page-select" @change="getSecondClass">
+                    <el-select v-model="form.cate_1st" placeholder="请选择" class="page-select" @change="getSecondClass">
                         <el-option
                                 v-for="item in firstClass"
                                 :key="item.id"
@@ -21,7 +21,7 @@
                     </el-select>
                 </el-col>
                 <el-col :span="4">
-                    <el-select  v-model="form.secondClassValue" placeholder="请选择" class="page-select" @change="getThirdClass">
+                    <el-select  v-model="form.cate_2st" placeholder="请选择" class="page-select" @change="getThirdClass">
                         <el-option
                                 v-for="item in secondClass"
                                 :key="item.id"
@@ -31,7 +31,7 @@
                     </el-select>
                 </el-col>
                 <el-col :span="4">
-                    <el-select v-model="form.thirdClassValue"  placeholder="请选择" class="page-select">
+                    <el-select v-model="form.cate_3st"  placeholder="请选择" class="page-select">
                         <el-option
                                 v-for="item in thirdClass"
                                 :key="item.id"
@@ -58,7 +58,7 @@
             <el-form-item label="商品卖点" prop="sellingPoint">
                 <el-row>
                     <el-col :span="10">
-                        <el-input type="textarea" v-model="form.sellingPoint"></el-input>
+                        <el-input type="textarea" v-model="form.hotPoint"></el-input>
                     </el-col>
                 </el-row>
                 <el-row>
@@ -297,23 +297,23 @@
 
                 form: {
                     name: '',
-                    sellingPoint: '',
+                    hotPoint: '',
                     goodPrice: '',
                     date2: '',
                     delivery: false,
                     type: [],
                     resource: '',
                     desc: '',
-                    firstClassValue:'',
-                    secondClassValue:'',
-                    thirdClassValue:'',
+                    cate_1st:'',
+                    cate_2st:'',
+                    cate_3st:'',
                 },
                 rules: {
                     name: [
                         {required: true, message: '请输入活动名称', trigger: 'blur'},
                         {min: 3, max: 200, message: '长度在 3 到 200 个字符', trigger: 'blur'}
                     ],
-                    sellingPoint: [
+                    hotPoint: [
                         {required: true, min: 1, max: 140, message: '长度在 1 到 140 个字符', trigger: 'blur'}
                     ],
                     goodPrice: [],
@@ -363,13 +363,13 @@
             },
             getSecondClass() {
                 this.secondClass={};
-                this.form.secondClassValue='';
+                this.form.cate_2st='';
                 this.thirdClass={};
-                this.form.thirdClassValue='';
+                this.form.cate_3st='';
 
                 this.$http.get('/api/category/sub', {
                     params: {
-                        pId: this.form.firstClassValue,
+                        pId: this.form.cate_1st,
                     },
                 }).then((res) => {
                     this.secondClass=res.data;
@@ -378,10 +378,10 @@
             },
             getThirdClass() {
                 this.thirdClass={};
-                this.form.thirdClassValue='';
+                this.form.cate_3st='';
                 this.$http.get('/api/category/sub', {
                     params: {
-                        pId: this.form.secondClassValue,
+                        pId: this.form.cate_2st,
                     },
                 }).then((res) => {
                     this.thirdClass=res.data;

@@ -107,26 +107,33 @@
                 const index = children.findIndex(d => d.id === data.id);
                 children.splice(index, 1);
             },
-
+                 //删除节点
             delHandle(node, data) {
+                // console.log(node)
+                // console.log(data);
+                // console.log(node.parent.childNodes.indexOf(node));
+
                 this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
                     confirmButtonText: '确定',
                     cancelButtonText: '取消',
                     type: 'warning'
                 }).then(() => {
                     this.$http.post('/api/category/delete', {
-                            id: data.id,
-                    })
-                })
-                    .then((res)=>{
-                        console.log(res);
-                    })
-                    .catch(() => {
+                        id: data.id,
+                    }).then((res) => {
+                        let index = node.parent.childNodes.indexOf(node);
+                        node.parent.childNodes.splice(index, 1);
                         this.$message({
                             type: 'info',
-                            message: '已取消删除'
+                            message: res.msg,
                         });
+                    })
+                }).catch(() => {
+                    this.$message({
+                        type: 'info',
+                        message: '已取消删除'
                     });
+                });
             },
             //打开添加窗口，获取pid
             openAddHandle(node, data) {
@@ -183,11 +190,11 @@
                 })
             },
             uploadSuccess(res, file) {
-                this.addForm.img = res.data[0];
+                this.addForm.img = res.src;
 
             },
             uploadSuccess2(res, file) {
-                this.editForm.img = res.data[0];
+                this.editForm.img = res.src;
 
             },
             beforeUpload(file) {

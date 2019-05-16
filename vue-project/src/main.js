@@ -5,6 +5,7 @@ import store from './store'
 import './plugins/element.js'
 import './plugins/axios.js'
 
+
 Vue.config.productionTip = false;
 
 new Vue({

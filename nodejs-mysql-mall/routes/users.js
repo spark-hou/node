@@ -320,7 +320,7 @@ router.get("/user/list", function(req, res) {
  */
 router.get("/user/info", function(req, res) {
     //查询账户数据
-    let sql = `SELECT u.id,u.username,u.nickname,u.sex,u.avatar,u.tel,r.role_name,r.id AS role FROM USERS AS u LEFT JOIN user_role AS ur ON u.id = ur.user_id LEFT JOIN role AS r ON r.id = ur.role_id WHERE user_id =?`;
+    let sql = `SELECT u.id,u.username,u.nickname,u.sex,u.avatar,u.tel,r.role_name,r.id AS role FROM USERS AS u LEFT JOIN user_role AS ur ON u.id = ur.user_id LEFT JOIN role AS r ON r.id = ur.role_id WHERE user_id =1`;
     db.query(sql, [req.query.uid], function(results, fields) {
         if (!results.length) {
             res.json({
