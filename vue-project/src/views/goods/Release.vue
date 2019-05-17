@@ -21,7 +21,7 @@
                     </el-select>
                 </el-col>
                 <el-col :span="4">
-                    <el-select  v-model="form.cate_2st" placeholder="请选择" class="page-select" @change="getThirdClass">
+                    <el-select v-model="form.cate_2st" placeholder="请选择" class="page-select" @change="getThirdClass">
                         <el-option
                                 v-for="item in secondClass"
                                 :key="item.id"
@@ -31,7 +31,7 @@
                     </el-select>
                 </el-col>
                 <el-col :span="4">
-                    <el-select v-model="form.cate_3st"  placeholder="请选择" class="page-select">
+                    <el-select v-model="form.cate_3st" placeholder="请选择" class="page-select">
                         <el-option
                                 v-for="item in thirdClass"
                                 :key="item.id"
@@ -72,7 +72,7 @@
             <el-form-item label="商品价格" prop="goodPrice">
                 <el-row>
                     <el-col :span="3">
-                        <el-input placeholder="请输入价格" v-model="form.goodPrice">
+                        <el-input placeholder="请输入价格" v-model="form.price">
                             <template slot="append">元</template>
                         </el-input>
                     </el-col>
@@ -91,7 +91,7 @@
             <el-form-item label="市场价格">
                 <el-row>
                     <el-col :span="3">
-                        <el-input placeholder="请输入价格">
+                        <el-input placeholder="请输入价格" v-model="form.marketPrice">
                             <template slot="append">元</template>
                         </el-input>
                     </el-col>
@@ -107,7 +107,7 @@
             <el-form-item label="成本价">
                 <el-row>
                     <el-col :span="3">
-                        <el-input placeholder="请输入价格">
+                        <el-input placeholder="请输入价格" v-model="form.cost">
                             <template slot="append">元</template>
                         </el-input>
                     </el-col>
@@ -123,7 +123,7 @@
             <el-form-item label="折扣">
                 <el-row>
                     <el-col :span="3">
-                        <el-input disabled>
+                        <el-input disabled v-model="form.discount">
                             <template slot="append">折</template>
                         </el-input>
                     </el-col>
@@ -139,7 +139,7 @@
             <el-form-item label="商品库存">
                 <el-row>
                     <el-col :span="3">
-                        <el-input>
+                        <el-input v-model="form.inventory">
                             <template slot="append">件</template>
                         </el-input>
                     </el-col>
@@ -158,7 +158,7 @@
             <el-form-item label="商品货号">
                 <el-row>
                     <el-col :span="3">
-                        <el-input>
+                        <el-input v-model="form.articleNo">
                         </el-input>
                     </el-col>
                 </el-row>
@@ -177,11 +177,12 @@
                 <el-row>
                     <el-upload
                             class="avatar-uploader"
-                            action="https://jsonplaceholder.typicode.com/posts/"
+                            action="/api/upload/goods"
                             :show-file-list="false"
+                            :headers="headers"
                             :on-success="handleAvatarSuccess"
                             :before-upload="beforeAvatarUpload">
-                        <img v-if="imageUrl" :src="imageUrl" class="avatar">
+                        <img v-if="form.img_lg" :src="form.img_lg" class="avatar">
                         <i v-else class="el-icon-plus avatar-uploader-icon"></i>
                     </el-upload>
                 </el-row>
@@ -197,14 +198,16 @@
             <el-form-item label="商品轮播图">
                 <el-row>
                     <el-upload
-                            action="https://jsonplaceholder.typicode.com/posts/"
+                            action="/api/upload/slider"
                             list-type="picture-card"
-                            :on-preview="handlePictureCardPreview"
+                            :headers="headers"
+                            :on-success="sliderSucceed"
+                            :before-upload="sliderUpload"
                             :on-remove="handleRemove">
                         <i class="el-icon-plus"></i>
                     </el-upload>
                     <el-dialog :visible.sync="dialogVisible">
-                        <img width="100%" :src="dialogImageUrl" alt="">
+                        <img width="100%" :src="form.slider" alt="">
                     </el-dialog>
                 </el-row>
                 <el-row>
@@ -225,7 +228,7 @@
             </el-alert>
             <el-form-item label="商品品牌">
                 <el-col :span="10">
-                    <el-input></el-input>
+                    <el-input v-model="form.brand"></el-input>
                 </el-col>
             </el-form-item>
             <el-form-item label="商品描述">
@@ -240,30 +243,30 @@
                     class="alert-box"
                     :closable="false">
             </el-alert>
-<!--            <el-form-item label="所在地">-->
-<!--                <el-col :span="4">-->
-<!--                    <el-select  placeholder="请选择" class="page-select">-->
-<!--                        <el-option label="区域一" value="shanghai"></el-option>-->
-<!--                        <el-option label="区域二" value="beijing"></el-option>-->
-<!--                    </el-select>-->
-<!--                </el-col>-->
-<!--                <el-col :span="4">-->
-<!--                    <el-select placeholder="请选择" class="page-select">-->
-<!--                        <el-option label="区域一" value="shanghai"></el-option>-->
-<!--                        <el-option label="区域二" value="beijing"></el-option>-->
-<!--                    </el-select>-->
-<!--                </el-col>-->
-<!--                <el-col :span="4">-->
-<!--                    <el-select placeholder="请选择" class="page-select">-->
-<!--                        <el-option label="区域一" value="shanghai"></el-option>-->
-<!--                        <el-option label="区域二" value="beijing"></el-option>-->
-<!--                    </el-select>-->
-<!--                </el-col>-->
-<!--            </el-form-item>-->
+            <!--            <el-form-item label="所在地">-->
+            <!--                <el-col :span="4">-->
+            <!--                    <el-select  placeholder="请选择" class="page-select">-->
+            <!--                        <el-option label="区域一" value="shanghai"></el-option>-->
+            <!--                        <el-option label="区域二" value="beijing"></el-option>-->
+            <!--                    </el-select>-->
+            <!--                </el-col>-->
+            <!--                <el-col :span="4">-->
+            <!--                    <el-select placeholder="请选择" class="page-select">-->
+            <!--                        <el-option label="区域一" value="shanghai"></el-option>-->
+            <!--                        <el-option label="区域二" value="beijing"></el-option>-->
+            <!--                    </el-select>-->
+            <!--                </el-col>-->
+            <!--                <el-col :span="4">-->
+            <!--                    <el-select placeholder="请选择" class="page-select">-->
+            <!--                        <el-option label="区域一" value="shanghai"></el-option>-->
+            <!--                        <el-option label="区域二" value="beijing"></el-option>-->
+            <!--                    </el-select>-->
+            <!--                </el-col>-->
+            <!--            </el-form-item>-->
             <el-form-item label="运费">
                 <el-row>
                     <el-col :span="3">
-                        <el-input placeholder="请输入价格">
+                        <el-input placeholder="请输入价格" v-model="form.freight">
                             <template slot="append">元</template>
                         </el-input>
                     </el-col>
@@ -277,7 +280,7 @@
                 </el-row>
             </el-form-item>
             <el-form-item>
-                <el-button type="success" round>提交</el-button>
+                <el-button type="success" round @click="submit">提交</el-button>
             </el-form-item>
         </el-form>
 
@@ -285,6 +288,7 @@
 </template>
 
 <script>
+    import {mapState} from 'vuex';
     import Editor from '@/views/goods/Editor.vue';
 
     export default {
@@ -294,20 +298,26 @@
         },
         data() {
             return {
-
                 form: {
                     name: '',
                     hotPoint: '',
-                    goodPrice: '',
-                    date2: '',
-                    delivery: false,
-                    type: [],
-                    resource: '',
-                    desc: '',
-                    cate_1st:'',
-                    cate_2st:'',
-                    cate_3st:'',
+                    price: '',
+                    marketPrice: '',
+                    cost: '',
+                    discount: 0,
+                    inventory: '',
+                    articleNo: '',
+                    img_lg: '',
+                    img_md: '',
+                    slider: '',
+                    brand: '',
+                    detail: '',
+                    freight: '',
+                    cate_1st: '',
+                    cate_2nd: '',
+                    cate_3rd: '',
                 },
+                sliderArr: [],
                 rules: {
                     name: [
                         {required: true, message: '请输入活动名称', trigger: 'blur'},
@@ -318,81 +328,145 @@
                     ],
                     goodPrice: [],
                 },
-                imageUrl: '',
-                dialogImageUrl: '',
                 dialogVisible: false,
                 firstClass: {},
-                secondClass:{},
-                thirdClass:{},
+                secondClass: {},
+                thirdClass: {},
+                headers: {
+                    Authorization: `Bearer ${sessionStorage.token}`,
+                },
 
 
             };
         },
         methods: {
             handleAvatarSuccess(res, file) {
-                this.imageUrl = URL.createObjectURL(file.raw);
+                this.form.img_lg = res.lgImg;
+                this.form.img_md = res.mdImg;
             },
             beforeAvatarUpload(file) {
-                const isJPG = file.type === 'image/jpeg';
+                const isJPG = file.type === 'image/jpeg' || 'image/png';
                 const isLt2M = file.size / 1024 / 1024 < 2;
 
                 if (!isJPG) {
-                    this.$message.error('上传头像图片只能是 JPG 格式!');
+                    this.$message.error('上传图片只能是 JPG /PNG格式!');
                 }
                 if (!isLt2M) {
-                    this.$message.error('上传头像图片大小不能超过 2MB!');
+                    this.$message.error('上传图片大小不能超过 2MB!');
                 }
                 return isJPG && isLt2M;
             },
+            //轮播图上传
+
             handleRemove(file, fileList) {
-                console.log(file, fileList);
+                let arr = [];
+                fileList.forEach(function (item) {
+                    arr.push(item.response.src)
+                })
+                this.sliderArr = [...arr];
+                this.form.slider = this.sliderArr.join(',');
+                console.log(this.form.slider)
             },
-            handlePictureCardPreview(file) {
-                this.dialogImageUrl = file.url;
-                this.dialogVisible = true;
+            sliderUpload(file) {
+                const isJPG = file.type === 'image/jpeg' || 'image/png';
+                const isLt2M = file.size / 1024 / 1024 < 2;
+
+                if (!isJPG) {
+                    this.$message.error('上传图片只能是 JPG /PNG格式!');
+                }
+                if (!isLt2M) {
+                    this.$message.error('上传图片大小不能超过 2MB!');
+                }
+                return isJPG && isLt2M;
             },
+            sliderSucceed(res) {
+                this.sliderArr.push(res.src);
+                this.form.slider = this.sliderArr.join(',');
+
+            },
+            //获取分类
             getFirstClass() {
                 this.$http.get('/api/category/sub', {
                     params: {
                         pId: 1,
                     },
                 }).then((res) => {
-                    this.firstClass=res.data;
+                    this.firstClass = res.data;
                     console.log(this.firstClass)
                 });
             },
             getSecondClass() {
-                this.secondClass={};
-                this.form.cate_2st='';
-                this.thirdClass={};
-                this.form.cate_3st='';
+                this.secondClass = {};
+                this.form.cate_2st = '';
+                this.thirdClass = {};
+                this.form.cate_3rd = '';
 
                 this.$http.get('/api/category/sub', {
                     params: {
                         pId: this.form.cate_1st,
                     },
                 }).then((res) => {
-                    this.secondClass=res.data;
+                    this.secondClass = res.data;
 
                 });
             },
             getThirdClass() {
-                this.thirdClass={};
-                this.form.cate_3st='';
+                this.thirdClass = {};
+                this.form.cate_3rd = '';
                 this.$http.get('/api/category/sub', {
                     params: {
                         pId: this.form.cate_2st,
                     },
                 }).then((res) => {
-                    this.thirdClass=res.data;
+                    this.thirdClass = res.data;
 
                 });
             },
-
+            //提交表单
+            submit() {
+                if (this.form.cate_1st == '') {
+                    this.form.cate_1st = 0;
+                }
+                if (this.form.cate_2nd == '') {
+                    this.form.cate_2nd = 0;
+                }
+                if (this.form.cate_3rd == '') {
+                    this.form.cate_3rd = 0;
+                }
+                this.form.detail = this.editorContent;
+                console.log({...this.form});
+                this.$http.post('/api/goods/release', {
+                    ...this.form
+                }).then((res) => {
+                    this.$message(res.msg);
+                    this.form = {
+                        name: '',
+                        hotPoint: '',
+                        price: '',
+                        marketPrice: '',
+                        cost: '',
+                        discount: 0,
+                        inventory: '',
+                        articleNo: '',
+                        img_lg: '',
+                        img_md: '',
+                        slider: '',
+                        brand: '',
+                        detail: '',
+                        freight: '',
+                        cate_1st: '',
+                        cate_2nd: '',
+                        cate_3rd: '',
+                    };
+                })
+            },
         },
         created() {
             this.getFirstClass();
         },
+        computed: mapState({
+            editorContent: state => state.release.editorContent,
+        })
     }
 </script>
 

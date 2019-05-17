@@ -61,7 +61,9 @@
 
     export default {
         name: "LeftMenu",
-        methods: {},
+        methods: {
+
+        },
         computed:mapState({
             isCollapse: state=>state.menu.isCollapse,
             role:state=>state.user.role,

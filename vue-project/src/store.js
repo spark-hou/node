@@ -5,6 +5,17 @@ import {Message} from 'element-ui';
 import router from './router'
 
 Vue.use(Vuex);
+let ReleaseModule={
+    state:{
+        editorContent:'',
+
+    },
+    mutations:{
+        changeEditorContent(state,html){
+            state.editorContent=html;
+        }
+    },
+};
 let UserModule = {
     state: {
         uid: '',
@@ -70,5 +81,6 @@ export default new Vuex.Store({
     modules: {
         user: UserModule,
         menu: MenuModule,
+        release:ReleaseModule,
     }
 })

@@ -26,7 +26,7 @@
                 </el-form-item>
                 <el-upload
                         class="avatar-uploader"
-                        action="https://jsonplaceholder.typicode.com/posts/"
+                        action="/api/upload/common"
                         :show-file-list="false"
                         :on-success="uploadSuccess2"
                         :headers="headers"
