@@ -80,7 +80,9 @@
             //加载第一页
             loadPage() {
                 this.$http.get('/api/goods', {
-                    pageIndex: this.page
+                    params:{
+                        pageIndex: this.page
+                    }
                 }).then((res) => {
                     this.tableData = [...res.data];
                     console.log(res.data)

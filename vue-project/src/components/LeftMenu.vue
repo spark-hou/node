@@ -61,13 +61,21 @@
 
     export default {
         name: "LeftMenu",
+        data(){
+            return{
+                role:'',
+            }
+        },
         methods: {
 
         },
         computed:mapState({
             isCollapse: state=>state.menu.isCollapse,
-            role:state=>state.user.role,
+            // role:state=>state.user.role,
         }) ,
+        created() {
+            this.role=parseInt(sessionStorage.role);
+        }
 
     }
 </script>
