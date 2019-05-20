@@ -21,12 +21,14 @@ let UserModule = {
         uid: '',
         role: '',
         token: '',
+        avatar:'',
     },
     mutations: {
         saveUserInfo(state, user) {
             state.uid = user.id;
             state.token = user.token;
             state.role = user.role;
+            state.avatar=user.avatar;
         }
     },
     actions: {
@@ -44,6 +46,7 @@ let UserModule = {
                     sessionStorage.token = res.data.token;
                     sessionStorage.uid = res.data.id;
                     sessionStorage.role = res.data.role;
+                    sessionStorage.avator=res.data.avatar;
                     //储存到state里
                     commit('saveUserInfo', res.data);
                     Message({

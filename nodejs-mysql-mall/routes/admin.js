@@ -164,7 +164,6 @@ router.get("/category/sub/", function(req, res) {
  * @apiSuccess {String} mdImg 返回360宽度图片地址.
  */
 router.post("/upload/goods/", upload.single('file'), function(req, res) {
-
 	//文件类型
 	var type = req.file.mimetype;
 	var size = req.file.size;
@@ -371,7 +370,7 @@ router.post("/upload/editor", upload.single('file'), function(req, res) {
 	res.json({
 		errno: 0,
 		msg: "图片上传处理成功!",
-		data: [`${server.host}:${server.host}`+ fileFolder + filename + extName]
+		data: [`${server.host}:3000`+ fileFolder + filename + extName]
 	});
 });
 /**

@@ -2,9 +2,96 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4d5d46a2-ecd8-4ca4-9073-316fbb14b859" name="默认更改列表" comment="">
-      <change beforePath="$PROJECT_DIR$/vue-project/src/components/LeftMenu.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vue-project/src/components/LeftMenu.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue-project/src/views/goods/List.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vue-project/src/views/goods/List.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue-project/src/views/order/OrderList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vue-project/src/views/order/OrderList.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nodejs-mysql-mall/public/admin/.project" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nodejs-mysql-mall/public/admin/category.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nodejs-mysql-mall/public/admin/css/goods_released.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nodejs-mysql-mall/public/admin/css/selling.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nodejs-mysql-mall/public/admin/edit.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nodejs-mysql-mall/public/admin/img/1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nodejs-mysql-mall/public/admin/img/2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nodejs-mysql-mall/public/admin/img/3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nodejs-mysql-mall/public/admin/img/4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nodejs-mysql-mall/public/admin/js/app.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nodejs-mysql-mall/public/admin/js/release.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nodejs-mysql-mall/public/admin/lib/PCASClass/PCASClass.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nodejs-mysql-mall/public/admin/lib/Validform/Validform_v5.3.2.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nodejs-mysql-mall/public/admin/lib/artTemplate/template-web.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nodejs-mysql-mall/public/admin/lib/axios/axios.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nodejs-mysql-mall/public/admin/lib/bootstrap/css/bootstrap-theme.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nodejs-mysql-mall/public/admin/lib/bootstrap/css/bootstrap-theme.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nodejs-mysql-mall/public/admin/lib/bootstrap/css/bootstrap-theme.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nodejs-mysql-mall/public/admin/lib/bootstrap/css/bootstrap-theme.min.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nodejs-mysql-mall/public/admin/lib/bootstrap/css/bootstrap.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nodejs-mysql-mall/public/admin/lib/bootstrap/css/bootstrap.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nodejs-mysql-mall/public/admin/lib/bootstrap/css/bootstrap.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nodejs-mysql-mall/public/admin/lib/bootstrap/css/bootstrap.min.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nodejs-mysql-mall/public/admin/lib/bootstrap/fonts/glyphicons-halflings-regular.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nodejs-mysql-mall/public/admin/lib/bootstrap/fonts/glyphicons-halflings-regular.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nodejs-mysql-mall/public/admin/lib/bootstrap/fonts/glyphicons-halflings-regular.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nodejs-mysql-mall/public/admin/lib/bootstrap/fonts/glyphicons-halflings-regular.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nodejs-mysql-mall/public/admin/lib/bootstrap/fonts/glyphicons-halflings-regular.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nodejs-mysql-mall/public/admin/lib/bootstrap/js/bootstrap.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nodejs-mysql-mall/public/admin/lib/bootstrap/js/bootstrap.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nodejs-mysql-mall/public/admin/lib/bootstrap/js/npm.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nodejs-mysql-mall/public/admin/lib/jQuery/jquery-3.2.1.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nodejs-mysql-mall/public/admin/lib/vue/vue.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nodejs-mysql-mall/public/admin/lib/wangEditor/fonts/w-e-icon.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nodejs-mysql-mall/public/admin/lib/wangEditor/wangEditor.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nodejs-mysql-mall/public/admin/lib/wangEditor/wangEditor.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nodejs-mysql-mall/public/admin/lib/wangEditor/wangEditor.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nodejs-mysql-mall/public/admin/lib/wangEditor/wangEditor.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nodejs-mysql-mall/public/admin/lib/wangEditor/wangEditor.min.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nodejs-mysql-mall/public/admin/lib/ztree/css/awesomeStyle/awesome.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nodejs-mysql-mall/public/admin/lib/ztree/css/awesomeStyle/awesome.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nodejs-mysql-mall/public/admin/lib/ztree/css/awesomeStyle/fa.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nodejs-mysql-mall/public/admin/lib/ztree/css/awesomeStyle/img/loading.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nodejs-mysql-mall/public/admin/lib/ztree/css/demo.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nodejs-mysql-mall/public/admin/lib/ztree/css/metroStyle/img/line_conn.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nodejs-mysql-mall/public/admin/lib/ztree/css/metroStyle/img/loading.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nodejs-mysql-mall/public/admin/lib/ztree/css/metroStyle/img/metro.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nodejs-mysql-mall/public/admin/lib/ztree/css/metroStyle/img/metro.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nodejs-mysql-mall/public/admin/lib/ztree/css/metroStyle/metroStyle.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nodejs-mysql-mall/public/admin/lib/ztree/css/zTreeStyle/img/diy/1_close.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nodejs-mysql-mall/public/admin/lib/ztree/css/zTreeStyle/img/diy/1_open.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nodejs-mysql-mall/public/admin/lib/ztree/css/zTreeStyle/img/diy/2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nodejs-mysql-mall/public/admin/lib/ztree/css/zTreeStyle/img/diy/3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nodejs-mysql-mall/public/admin/lib/ztree/css/zTreeStyle/img/diy/4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nodejs-mysql-mall/public/admin/lib/ztree/css/zTreeStyle/img/diy/5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nodejs-mysql-mall/public/admin/lib/ztree/css/zTreeStyle/img/diy/6.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nodejs-mysql-mall/public/admin/lib/ztree/css/zTreeStyle/img/diy/7.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nodejs-mysql-mall/public/admin/lib/ztree/css/zTreeStyle/img/diy/8.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nodejs-mysql-mall/public/admin/lib/ztree/css/zTreeStyle/img/diy/9.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nodejs-mysql-mall/public/admin/lib/ztree/css/zTreeStyle/img/line_conn.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nodejs-mysql-mall/public/admin/lib/ztree/css/zTreeStyle/img/loading.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nodejs-mysql-mall/public/admin/lib/ztree/css/zTreeStyle/img/zTreeStandard.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nodejs-mysql-mall/public/admin/lib/ztree/css/zTreeStyle/img/zTreeStandard.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nodejs-mysql-mall/public/admin/lib/ztree/css/zTreeStyle/zTreeStyle.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nodejs-mysql-mall/public/admin/lib/ztree/js/jquery-1.4.4.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nodejs-mysql-mall/public/admin/lib/ztree/js/jquery.ztree.all.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nodejs-mysql-mall/public/admin/lib/ztree/js/jquery.ztree.all.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nodejs-mysql-mall/public/admin/lib/ztree/js/jquery.ztree.core.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nodejs-mysql-mall/public/admin/lib/ztree/js/jquery.ztree.core.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nodejs-mysql-mall/public/admin/lib/ztree/js/jquery.ztree.excheck.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nodejs-mysql-mall/public/admin/lib/ztree/js/jquery.ztree.excheck.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nodejs-mysql-mall/public/admin/lib/ztree/js/jquery.ztree.exedit.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nodejs-mysql-mall/public/admin/lib/ztree/js/jquery.ztree.exedit.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nodejs-mysql-mall/public/admin/lib/ztree/js/jquery.ztree.exhide.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nodejs-mysql-mall/public/admin/lib/ztree/js/jquery.ztree.exhide.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nodejs-mysql-mall/public/admin/release.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nodejs-mysql-mall/public/admin/release.html_bak" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nodejs-mysql-mall/public/admin/selling.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nodejs-mysql-mall/public/api/api_data.js" beforeDir="false" afterPath="$PROJECT_DIR$/nodejs-mysql-mall/public/api/api_data.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nodejs-mysql-mall/public/api/api_data.json" beforeDir="false" afterPath="$PROJECT_DIR$/nodejs-mysql-mall/public/api/api_data.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nodejs-mysql-mall/public/api/api_project.js" beforeDir="false" afterPath="$PROJECT_DIR$/nodejs-mysql-mall/public/api/api_project.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nodejs-mysql-mall/public/api/api_project.json" beforeDir="false" afterPath="$PROJECT_DIR$/nodejs-mysql-mall/public/api/api_project.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nodejs-mysql-mall/public/images/goods/b537fd20-7846-11e9-adf3-3593bb2c44cd_360.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nodejs-mysql-mall/routes/admin.js" beforeDir="false" afterPath="$PROJECT_DIR$/nodejs-mysql-mall/routes/admin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nodejs-mysql-mall/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/nodejs-mysql-mall/routes/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nodejs-mysql-mall/routes/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/nodejs-mysql-mall/routes/users.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vue-project/src/components/HeaderBar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vue-project/src/components/HeaderBar.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vue-project/src/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/vue-project/src/store.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vue-project/vue.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/vue-project/vue.config.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -17,11 +104,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/vue-project/src/views/order/OrderList.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="332">
-              <caret line="67" column="49" selection-start-line="67" selection-start-column="49" selection-end-line="67" selection-end-column="49" />
+            <state relative-caret-position="210">
+              <caret line="7" column="95" selection-start-line="7" selection-start-column="95" selection-end-line="7" selection-end-column="95" />
               <folding>
                 <element signature="n#style#0;n#el-table#0;n#div#0;n#template#0;n#!!top" expanded="true" />
               </folding>
@@ -29,11 +116,20 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/vue-project/src/components/HeaderBar.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="5" selection-start-line="5" selection-end-line="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/vue-project/src/views/goods/List.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="133" lean-forward="true" selection-start-line="133" selection-end-line="146" selection-end-column="21" />
+            <state relative-caret-position="3990">
+              <caret line="133" selection-start-line="133" selection-end-line="146" selection-end-column="21" />
               <folding>
                 <element signature="n#style#0;n#el-table#0;n#div#0;n#template#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#img#0;n#div#0;n#template#0;n#el-table-column#0;n#el-table#0;n#div#0;n#template#0;n#!!top" expanded="true" />
@@ -78,16 +174,16 @@
         <option value="$PROJECT_DIR$/vue-project/src/main.js" />
         <option value="$PROJECT_DIR$/vue-project/src/views/Index.vue" />
         <option value="$PROJECT_DIR$/vue-project/src/views/Login.vue" />
-        <option value="$PROJECT_DIR$/vue-project/src/components/HeaderBar.vue" />
         <option value="$PROJECT_DIR$/vue-project/src/views/goods/Category.vue" />
         <option value="$PROJECT_DIR$/nodejs-mysql-mall/routes/admin.js" />
         <option value="$PROJECT_DIR$/vue-project/src/views/goods/Editor.vue" />
-        <option value="$PROJECT_DIR$/vue-project/src/store.js" />
         <option value="$PROJECT_DIR$/vue-project/src/views/goods/Release.vue" />
         <option value="$PROJECT_DIR$/vue-project/src/views/user/UserList.vue" />
         <option value="$PROJECT_DIR$/vue-project/src/components/LeftMenu.vue" />
         <option value="$PROJECT_DIR$/vue-project/src/views/goods/List.vue" />
         <option value="$PROJECT_DIR$/vue-project/src/views/order/OrderList.vue" />
+        <option value="$PROJECT_DIR$/vue-project/src/store.js" />
+        <option value="$PROJECT_DIR$/vue-project/src/components/HeaderBar.vue" />
       </list>
     </option>
   </component>
@@ -114,7 +210,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -131,7 +226,37 @@
               <item name="www" type="b2602c69:ProjectViewProjectNode" />
               <item name="www" type="462c0819:PsiDirectoryNode" />
               <item name="vue-project" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="www" type="b2602c69:ProjectViewProjectNode" />
+              <item name="www" type="462c0819:PsiDirectoryNode" />
+              <item name="vue-project" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="www" type="b2602c69:ProjectViewProjectNode" />
+              <item name="www" type="462c0819:PsiDirectoryNode" />
+              <item name="vue-project" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="www" type="b2602c69:ProjectViewProjectNode" />
+              <item name="www" type="462c0819:PsiDirectoryNode" />
+              <item name="vue-project" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="img" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="www" type="b2602c69:ProjectViewProjectNode" />
+              <item name="www" type="462c0819:PsiDirectoryNode" />
+              <item name="vue-project" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="img" type="462c0819:PsiDirectoryNode" />
+              <item name="goods" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="www" type="b2602c69:ProjectViewProjectNode" />
@@ -145,36 +270,13 @@
               <item name="www" type="462c0819:PsiDirectoryNode" />
               <item name="vue-project" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="www" type="b2602c69:ProjectViewProjectNode" />
-              <item name="www" type="462c0819:PsiDirectoryNode" />
-              <item name="vue-project" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="goods" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="www" type="b2602c69:ProjectViewProjectNode" />
-              <item name="www" type="462c0819:PsiDirectoryNode" />
-              <item name="vue-project" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="order" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="www" type="b2602c69:ProjectViewProjectNode" />
-              <item name="www" type="462c0819:PsiDirectoryNode" />
-              <item name="vue-project" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="user" type="462c0819:PsiDirectoryNode" />
+              <item name="plugins" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -250,11 +352,15 @@
       <workItem from="1558074869164" duration="757000" />
       <workItem from="1558075884186" duration="15224000" />
       <workItem from="1558141494101" duration="7385000" />
+      <workItem from="1558316455424" duration="3315000" />
+      <workItem from="1558323358539" duration="1085000" />
+      <workItem from="1558324664838" duration="84000" />
+      <workItem from="1558324789377" duration="615000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="212212000" />
+    <option name="totallyTimeSpent" value="217311000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -340,11 +446,7 @@
     <entry file="file://$PROJECT_DIR$/vue-project/src/assets/logo.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/nodejs-mysql-mall/public/admin/category.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3510" />
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/nodejs-mysql-mall/public/admin/category.html" />
     <entry file="file://$PROJECT_DIR$/vue-project/src/plugins/element.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -365,20 +467,7 @@
     <entry file="file://$PROJECT_DIR$/nodejs-mysql-mall/config/mysql.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/nodejs-mysql-mall/public/admin/release.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="482">
-          <caret line="371" column="20" selection-start-line="371" selection-start-column="20" selection-end-line="371" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vue-project/src/views/Register.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-154">
-          <caret line="73" column="28" lean-forward="true" selection-start-line="73" selection-start-column="28" selection-end-line="73" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/nodejs-mysql-mall/public/admin/release.html" />
     <entry file="file://$PROJECT_DIR$/vue-project/vue.config.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="510">
@@ -392,17 +481,6 @@
           <caret line="6" column="8" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
           <folding>
             <element signature="e#103#141#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vue-project/src/views/Index.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="10" column="25" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="25" />
-          <folding>
-            <element signature="n#style#0;n#el-header#0;n#el-container#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="e#527#578#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -426,20 +504,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/vue-project/src/views/Login.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1646">
-          <caret line="69" column="26" lean-forward="true" selection-start-line="69" selection-start-column="26" selection-end-line="69" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vue-project/src/components/HeaderBar.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="34" column="14" lean-forward="true" selection-start-line="34" selection-start-column="14" selection-end-line="34" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vue-project/src/views/goods/Editor.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
@@ -447,16 +511,6 @@
           <folding>
             <element signature="n#style#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
             <element signature="e#115#145#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vue-project/src/plugins/axios.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="2" column="32" lean-forward="true" selection-start-line="2" selection-start-column="32" selection-end-line="2" selection-end-column="32" />
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -478,31 +532,10 @@
     <entry file="file://$PROJECT_DIR$/vue-project/babel.config.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/vue-project/src/store.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="13" column="40" selection-start-line="13" selection-start-column="40" selection-end-line="13" selection-end-column="40" />
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vue-project/src/views/goods/Release.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-688">
           <caret line="454" column="35" lean-forward="true" selection-start-line="454" selection-start-column="35" selection-end-line="454" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vue-project/src/router.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="30" column="109" selection-start-line="30" selection-start-column="97" selection-end-line="30" selection-end-column="109" />
-          <folding>
-            <element signature="e#54#75#0" expanded="true" />
-            <element signature="e#160#198#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -551,10 +584,59 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/vue-project/src/views/goods/List.vue">
+    <entry file="file://$PROJECT_DIR$/vue-project/src/views/Register.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="102" column="27" selection-start-line="102" selection-start-column="27" selection-end-line="102" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vue-project/src/views/Index.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
-          <caret line="133" lean-forward="true" selection-start-line="133" selection-end-line="146" selection-end-column="21" />
+          <caret line="10" column="25" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="25" />
+          <folding>
+            <element signature="n#style#0;n#el-header#0;n#el-container#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="e#527#578#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vue-project/src/plugins/axios.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="780">
+          <caret line="26" column="28" lean-forward="true" selection-start-line="26" selection-start-column="28" selection-end-line="26" selection-end-column="28" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vue-project/src/router.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="632">
+          <caret line="49" column="18" lean-forward="true" selection-start-line="49" selection-start-column="18" selection-end-line="49" selection-end-column="18" />
+          <folding>
+            <element signature="e#54#75#0" expanded="true" />
+            <element signature="e#160#198#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vue-project/src/store.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1050">
+          <caret line="39" column="37" selection-start-line="39" selection-start-column="37" selection-end-line="39" selection-end-column="37" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vue-project/src/views/goods/List.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3990">
+          <caret line="133" selection-start-line="133" selection-end-line="146" selection-end-column="21" />
           <folding>
             <element signature="n#style#0;n#el-table#0;n#div#0;n#template#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#img#0;n#div#0;n#template#0;n#el-table-column#0;n#el-table#0;n#div#0;n#template#0;n#!!top" expanded="true" />
@@ -562,13 +644,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/vue-project/src/views/Login.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1260">
+          <caret line="42" column="39" selection-start-line="42" selection-start-column="31" selection-end-line="42" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/vue-project/src/views/order/OrderList.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="332">
-          <caret line="67" column="49" selection-start-line="67" selection-start-column="49" selection-end-line="67" selection-end-column="49" />
+        <state relative-caret-position="210">
+          <caret line="7" column="95" selection-start-line="7" selection-start-column="95" selection-end-line="7" selection-end-column="95" />
           <folding>
             <element signature="n#style#0;n#el-table#0;n#div#0;n#template#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vue-project/src/components/HeaderBar.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
         </state>
       </provider>
     </entry>

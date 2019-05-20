@@ -19,6 +19,7 @@
         data() {
             return {
                 userInfo:{},
+                img:'',
             };
         },
         methods: {
@@ -31,7 +32,8 @@
                     console.log(res);
                     this.userInfo={...res.data};
 
-                })
+                });
+                this.img=sessionStorage.avator;
             },
             Collapse(){
                 this.$store.commit('Collapse')

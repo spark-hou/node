@@ -18,7 +18,9 @@ module.exports = {
                 }
             },
         }
-    }
+    },
+
+    publicPath: '/admin/'
 }
 
 
