@@ -3,7 +3,7 @@
  * 开发者 => 开发者ID
  */
 let wx = {
-	appid: "wxfa4fa674bd4514e4", //小程序ID
-	appSecret: "d0df843cb4715008f6152b5e0d1206d0", //小程序密钥
+	appid: "wx77210ce3b46f5d16", //小程序ID
+	appSecret: "1b387d62f04e49e26d79013f10c5ea3f", //小程序密钥
 }
 module.exports = wx;
