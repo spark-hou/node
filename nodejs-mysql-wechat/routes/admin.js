@@ -11,6 +11,8 @@ var upload = multer();
 var images = require("images");
 //uuid
 var uuidv1 = require('uuid/v1');
+// JSON Web Token
+var jwt = require("jsonwebtoken");
 /**
  * @apiDefine SuccessResponse
  * @apiSuccess { Boolean } status 请求状态.
@@ -34,9 +36,9 @@ var uuidv1 = require('uuid/v1');
  */
 
 /**
- * @api {post} /api/user/register 管理员注册
+ * @api {post} /api/admin/register 管理员注册
  * @apiDescription 注册成功， 返回token, 请在头部headers中设置Authorization: `Bearer ${token}`,所有请求都必须携带token;
- * @apiName register
+ * @apiName AdminRegister
  * @apiGroup Admin User
  * @apiPermission admin
  * 
@@ -48,9 +50,9 @@ var uuidv1 = require('uuid/v1');
  * 
  * @apiUse SuccessResponse
  * 
- * @apiSampleRequest /api/user/register
+ * @apiSampleRequest /api/admin/register
  */
-router.post('/user/register', function(req, res) {
+router.post('/admin/register', function(req, res) {
 	let { username, password, nickname, sex, tel } = req.body;
 	// 查询账户是否存在
 	let sql = `SELECT * FROM ADMIN WHERE username = ?`
@@ -119,10 +121,10 @@ router.post('/user/register', function(req, res) {
 });
 
 /**
- * @api {post} /api/user/login 管理员登录
+ * @api {post} /api/admin/login 管理员登录
  * @apiDescription 登录成功， 返回token, 请在头部headers中设置Authorization: `Bearer ${token}`, 所有请求都必须携带token;
- * @apiName login
- * @apiGroup Admin-User
+ * @apiName AdminLogin
+ * @apiGroup Admin User
  * @apiPermission admin
  * 
  * @apiParam {String} username 用户账户名.
@@ -130,10 +132,10 @@ router.post('/user/register', function(req, res) {
  * 
  * @apiUse SuccessResponse
  * 
- * @apiSampleRequest /api/user/login
+ * @apiSampleRequest /api/admin/login
  */
 
-router.post('/user/login', function(req, res) {
+router.post('/admin/login', function(req, res) {
 	let { username, password } = req.body;
 	let sql =
 		`SELECT a.*,r.id AS role FROM ADMIN a LEFT JOIN admin_role ar ON a.id = ar.admin_id LEFT JOIN role r ON r.id = ar.role_id  WHERE username = ? AND password = ?`;
@@ -171,6 +173,91 @@ router.post('/user/login', function(req, res) {
 			}
 		});
 
+	});
+});
+/**
+ * @api {get} /api/admin/list/ 获取admin用户列表
+ * @apiName AdminList
+ * @apiGroup Admin User
+ * @apiPermission admin
+ * 
+ * @apiSampleRequest /api/admin/list
+ */
+router.get("/admin/list", function(req, res) {
+	//查询账户数据
+	let sql =
+		`SELECT a.id,a.username,a.nickname,a.sex,a.avatar,a.tel,r.role_name,r.id AS role FROM ADMIN AS a LEFT JOIN admin_role AS ar ON a.id = ar.admin_id LEFT JOIN role AS r ON r.id = ar.role_id`;
+	db.query(sql, [], function(results, fields) {
+		if (!results.length) {
+			res.json({
+				status: false,
+				msg: "获取失败！"
+			});
+			return false;
+		}
+		// 获取成功
+		res.json({
+			status: true,
+			msg: "获取成功！",
+			data: results
+		});
+	})
+});
+/**
+ * @api {get} /api/admin/info/ 获取admin个人资料
+ * @apiName AdminInfo
+ * @apiGroup Admin User
+ * 
+ * @apiParam {Number} uid admin用户id.
+ * 
+ * @apiSampleRequest /api/admin/info
+ */
+router.get("/admin/info", function(req, res) {
+	//查询账户数据
+	let sql =
+		`SELECT a.id,a.username,a.nickname,a.sex,a.avatar,a.tel,r.role_name,r.id AS role FROM ADMIN AS a LEFT JOIN admin_role AS ar ON a.id = ar.admin_id LEFT JOIN role AS r ON r.id = ar.role_id WHERE a.id = ?`;
+	db.query(sql, [req.query.uid], function(results, fields) {
+		if (!results.length) {
+			res.json({
+				status: false,
+				msg: "获取失败！"
+			});
+			return false;
+		}
+		// 获取成功
+		res.json({
+			status: true,
+			msg: "获取成功！",
+			data: results[0]
+		});
+	})
+});
+/**
+ * @api { post } /api/admin/info/update/ 更新个人资料
+ * @apiName UpdateInfo
+ * @apiGroup Admin User
+ * 
+ * @apiParam {Number} uid 用户id.
+ * @apiParam {String} nickname 昵称.
+ * @apiParam {String} sex 性别.
+ * @apiParam {String} avatar 头像.
+ * @apiParam { String } tel 手机号码.
+ * @apiParam { String } role 用户角色id.
+ * 
+ * @apiSampleRequest /api/admin/info/update/
+ */
+router.post("/admin/info/update/", function(req, res) {
+	let { uid, nickname, sex, avatar, tel, role } = req.body;
+	let sql =
+		`
+    UPDATE admin SET nickname = ?,sex = ?,avatar = ? ,tel = ? WHERE id = ?;
+    UPDATE admin_role SET role_id = ? WHERE admin_id = ?;
+    `
+	db.query(sql, [nickname, sex, avatar, tel, uid, role, uid], function(results, fields) {
+		res.json({
+			status: true,
+			msg: "修改成功！"
+		});
 	});
 });
 /**
@@ -289,34 +376,7 @@ router.get("/menu/sub/", function(req, res) {
 		});
 	});
 });
-/**
- * @api {get} /api/user/list/ 获取用户列表
- * @apiName UserList
- * @apiGroup Admin-User
- * @apiPermission admin
- * 
- * @apiSampleRequest /api/user/list
- */
-router.get("/user/list", function(req, res) {
-	//查询账户数据
-	let sql =
-		`SELECT a.id,a.username,a.nickname,a.sex,a.avatar,a.tel,r.role_name,r.id AS role FROM ADMIN AS a LEFT JOIN admin_role AS ar ON a.id = ar.admin_id LEFT JOIN role AS r ON r.id = ur.role_id`;
-	db.query(sql, [], function(results, fields) {
-		if (!results.length) {
-			res.json({
-				status: false,
-				msg: "获取失败！"
-			});
-			return false;
-		}
-		// 获取成功
-		res.json({
-			status: true,
-			msg: "获取成功！",
-			data: results
-		});
-	})
-});
+
 /**
  * @api {get} /api/category/all/ 获取所有树形分类
  * @apiName category/all 获取所有树形分类
@@ -350,8 +410,17 @@ router.get("/category/all", function(req, res) {
  * @apiSampleRequest /api/category/add/
  */
 router.post("/category/add", function(req, res) {
+	let { name, pId, level, img } = req.body;
+	// 图片img为空
+	if (!img) {
+		res.json({
+			status: false,
+			msg: "请上传分类图片!",
+		});
+		return;
+	}
 	let sql = `INSERT INTO CATEGORIES (name,pId,level,img) VALUES (?,?,?,?) `;
-	db.query(sql, [req.body.name, req.body.pId, req.body.level, req.body.img], function(results, fields) {
+	db.query(sql, [name, pId, level, img], function(results, fields) {
 		//成功
 		res.json({
 			status: true,
@@ -373,11 +442,20 @@ router.post("/category/add", function(req, res) {
  * @apiSampleRequest /api/category/delete/
  */
 router.post("/category/delete", function(req, res) {
-	let sql = `
-	SELECT img FROM categories WHERE id = ?;
-	DELETE FROM CATEGORIES WHERE id = ?`;
+	let sql = `SELECT img FROM categories WHERE id = ?;DELETE FROM CATEGORIES WHERE id = ?`;
 	db.query(sql, [req.body.id, req.body.id], function(results, fields) {
-		let src = '.' + results[0][0].img;
+		let src = results[0][0].img;
+		// 如果没有分类图片
+		if (!src) {
+			//成功
+			res.json({
+				status: true,
+				msg: "success!"
+			});
+			return;
+		}
+		// 有分类图片
+		src = '.' + results[0][0].img;
 		let realPath = path.resolve(__dirname, '../public/', src);
 		fs.unlink(realPath, function(err) {
 			if (err) {
@@ -713,6 +791,78 @@ router.post("/upload/common", upload.single('file'), function(req, res) {
 		src: fileFolder + filename + extName
 	});
 });
+/**
+ * @api {post} /api/upload/avatar/ admin用户头像上传API
+ * @apiDescription 上传图片会自动检测图片质量，压缩图片，体积<2M，不限制尺寸，存储至avatar文件夹
+ * @apiName UploadAvatar
+ * @apiGroup Upload Image
+ * 
+ * 
+ * @apiParam {File} file File文件对象;
+ * 
+ * @apiSampleRequest /api/upload/avatar/
+ * 
+ * @apiSuccess {String} src 返回图片地址.
+ */
+router.post("/upload/avatar", upload.single('file'), function(req, res) {
+	//文件类型
+	var type = req.file.mimetype;
+	var size = req.file.size;
+	//判断是否为图片
+	var reg = /^image\/\w+$/;
+	var flag = reg.test(type);
+	if (!flag) {
+		res.json({
+			errno: 1,
+			msg: "格式错误，请选择一张图片!"
+		});
+		return;
+	}
+	//判断图片体积是否小于2M
+	if (size >= 2 * 1024 * 1024) {
+		res.json({
+			errno: 1,
+			msg: "图片体积太大，请压缩图片!"
+		});
+		return;
+	}
+	//判读图片尺寸
+	var width = images(req.file.buffer).width();
+	var height = images(req.file.buffer).height();
+	if (width != height) {
+		res.status(400).json({
+			status: false,
+			msg: "图片必须为正方形，请重新上传!"
+		});
+		return;
+	}
+	if (width < 300 || width > 1500) {
+		res.status(400).json({
+			status: false,
+			msg: "图片尺寸300-1500，请重新处理!"
+		});
+		return;
+	}
+	//处理原文件名
+	var originalName = req.file.originalname;
+	var formate = originalName.split(".");
+	//扩展名
+	var extName = "." + formate[formate.length - 1];
+	var filename = uuidv1();
+	//储存文件夹
+	var fileFolder = "/images/avatar/";
+	//处理图片
+	images(req.file.buffer)
+		.save("public" + fileFolder + filename + extName, {
+			quality: 70 //保存图片到文件,图片质量为70
+		});
+	//返回储存结果
+	res.json({
+		status: true,
+		msg: "图片上传处理成功!",
+		src: fileFolder + filename + extName
+	});
+});
 
 /**
  * @api {post} /api/goods/release/ 发布新商品
@@ -791,6 +941,75 @@ router.post("/goods/edit", function(req, res) {
 		req.body.marketPrice, req.body.cost, req.body.discount, req.body.inventory, req.body.articleNo, req.body.img_lg,
 		req.body.img_md, req.body.slider, req.body.brand, req.body.detail, req.body.freight, req.body.id
 	], function(results, fields) {
+		//成功
+		res.json({
+			status: true,
+			msg: "success!",
+			data: results[0]
+		});
+	});
+});
+/**
+ * @api {get} /api/admin/goods/list 获取商品列表
+ * @apiDescription 具备商品分页功能，3个分类参数至多能传1个
+ * @apiName AdminGoodsList 获取商品列表
+ * @apiGroup Admin Goods
+ * @apiPermission admin
+ * 
+ * @apiParam {Number} [pageSize] 一个页有多少个商品,默认4个;
+ * @apiParam {Number} [pageIndex] 第几页,默认1;
+ * @apiParam {Number} [cate_1st] 一级分类id;
+ * @apiParam {Number} [cate_2nd] 二级分类id;
+ * @apiParam {Number} [cate_3rd] 三级分类id;
+ * @apiParam {String="ASC","DESC"} [sortByPrice] 按照价格排序，从小到大-ASC,从大到小-DESC;
+ * @apiSampleRequest /api/admin/goods/list
+ */
+router.get("/admin/goods/list", function(req, res) {
+	let query = req.query;
+	//取出空键值对
+	for (let key in query) {
+		if (!query[key]) {
+			delete query[key]
+		}
+	}
+	//拼接SQL
+	function produceSQL({ pageSize = 4, pageIndex = 1, sortByPrice = '', cate_1st = '', cate_2nd = '', cate_3rd = '', }) {
+		let size = parseInt(pageSize);
+		let count = size * (pageIndex - 1);
+		let sql = `SELECT id,name,price,img_md,articleNo,inventory,create_time FROM GOODS`
+		if (cate_1st) {
+			sql += `WHERE cate_1st = ${cate_1st}`;
+		}
+		if (cate_2nd) {
+			sql += `WHERE cate_2nd = ${cate_2nd}`;
+		}
+		if (cate_3rd) {
+			sql += `WHERE cate_3rd = ${cate_3rd}`;
+		}
+		sql += ` ORDER BY price ${sortByPrice},create_time DESC LIMIT ${count},${size}`
+		return sql;
+	}
+	db.query(produceSQL(req.query), [], function(results, fields) {
+		//成功
+		res.json({
+			status: true,
+			msg: "success!",
+			data: results
+		});
+	});
+});
+/**
+ * @api {get} /api/admin/goods/detail/ 获取商品详情
+ * @apiName GoodsDetail
+ * @apiGroup Admin Goods
+ * 
+ * @apiParam {Number} id 商品id;
+ * 
+ * @apiSampleRequest /api/admin/goods/detail/
+ */
+router.get("/admin/goods/detail/", function(req, res) {
+	let sql = `SELECT * FROM GOODS WHERE id = ?`
+	db.query(sql, [req.query.id], function(results, fields) {
 		//成功
 		res.json({
 			status: true,

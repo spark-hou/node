@@ -1,0 +1,10 @@
+.table{
+  width: 100%;
+  border: 1px solid #666666;
+}
+.table th{
+  background-color: #666666;
+}
+.table td{
+  border:  1px solid #eeeeee;
+}
