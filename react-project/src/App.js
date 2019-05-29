@@ -325,7 +325,7 @@ class TableContainer extends React.Component {
                     id:2,
                     name:'张2',
                     age:'45',
-                },          {
+                }, {
                     id:3,
                     name:'张3',
                     age:'34',
@@ -349,11 +349,36 @@ class TableContainer extends React.Component {
             }
         })
     }
+    nameChange=(e)=>{
+        // console.log(e.target);
+        this.setState( {name: e.target.value,})
+    }
+    ageChange=(e)=>{
+        // console.log(e.target);
+        this.setState( {
+            age:e.target.value,
+        })
+    }
+    addHandle=()=>{
+        let length=this.state.form.length+1;
+        let newRow={
+            id:length,
+            name:this.state.name,
+            age:this.state.age,
+        }
+        this.setState((state,props)=>{
+            state.form.push(newRow);
+            return{
+                form:state.form
+            }
+        })
+    }
     render() {
+        let {name,age}=this.state;
         return (
             <div className="table-container">
                 <div className="box">
-                    <InputForm/>
+                    <InputForm name={name} age={age} nameChange={this.nameChange} ageChange={this.ageChange} addHandle={this.addHandle}/>
                     <TableForm form={this.state.form} delRow={this.delRow}/>
                     <div className="search">
                         <label htmlFor="">搜索:</label>
@@ -391,7 +416,7 @@ class TableForm extends React.Component{
                     {
                         this.props.form.map((item,index)=>{
                             return(
-                                <tr key={index}>
+                                <tr key={item.id}>
                                     <td>{item.id}</td>
                                     <td>{item.name}</td>
                                     <td>{item.age}</td>
@@ -418,12 +443,13 @@ class InputForm extends React.Component{
     //     }
     // }
     render() {
+        let {name,age,nameChange,ageChange,addHandle}=this.props;
         return(
             <div className="add">
                 <label htmlFor="">添加:</label>
-                <input type="text" id="name" placeholder="姓名" value={}/>
-                <input type="text" id="age" placeholder="年龄"/>
-                <button type="button" id="add">添加</button>
+                <input type="text" id="name" placeholder="姓名" value={name} onChange={nameChange}/>
+                <input type="text" id="age" placeholder="年龄" value={age} onChange={ageChange}/>
+                <button type="button" id="add" onClick={addHandle}>添加</button>
                 <label htmlFor="">变色:</label>
                 <button type="button" id="colorChange">移入变色:关</button>
             </div>

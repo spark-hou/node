@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4d5d46a2-ecd8-4ca4-9073-316fbb14b859" name="默认更改列表" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/react-project/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/react-project/src/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react-project/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/react-project/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/react-project/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/react-project/src/App.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -20,8 +19,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/react-project/src/App.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="192">
-              <caret line="345" column="33" lean-forward="true" selection-start-line="345" selection-start-column="33" selection-end-line="345" selection-end-column="33" />
+            <state relative-caret-position="1675">
+              <caret line="362" column="44" lean-forward="true" selection-start-line="362" selection-start-column="44" selection-end-line="362" selection-end-column="44" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
                 <element signature="n#Logout#0" />
@@ -31,7 +30,6 @@
                 <element signature="n#Toggle#0" />
                 <element signature="n#Clock#0" />
                 <element signature="n#StudentTable#0" />
-                <element signature="n#!!block;n#constructor#0;n#StudentTable#0" />
                 <element signature="n#Register#0" />
                 <element signature="n#TableForm#0" />
               </folding>
@@ -43,7 +41,7 @@
         <entry file="file://$PROJECT_DIR$/react-project/src/App.css">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="570">
-              <caret line="19" column="26" lean-forward="true" selection-start-line="19" selection-start-column="26" selection-end-line="19" selection-end-column="26" />
+              <caret line="19" column="26" selection-start-line="19" selection-start-column="26" selection-end-line="19" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -124,6 +122,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -146,7 +145,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -233,11 +231,12 @@
       <workItem from="1559092566233" duration="17606000" />
       <workItem from="1559129112337" duration="294000" />
       <workItem from="1559130082609" duration="4486000" />
+      <workItem from="1559136561671" duration="2552000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="249555000" />
+    <option name="totallyTimeSpent" value="252107000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -616,20 +615,11 @@
         <state relative-caret-position="-178" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/react-project/src/form.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/react-project/src/App.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
-          <caret line="19" column="26" lean-forward="true" selection-start-line="19" selection-start-column="26" selection-end-line="19" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/react-project/src/form.js" />
     <entry file="file://$PROJECT_DIR$/react-project/src/App.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="345" column="33" lean-forward="true" selection-start-line="345" selection-start-column="33" selection-end-line="345" selection-end-column="33" />
+        <state relative-caret-position="1675">
+          <caret line="362" column="44" lean-forward="true" selection-start-line="362" selection-start-column="44" selection-end-line="362" selection-end-column="44" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
             <element signature="n#Logout#0" />
@@ -639,10 +629,16 @@
             <element signature="n#Toggle#0" />
             <element signature="n#Clock#0" />
             <element signature="n#StudentTable#0" />
-            <element signature="n#!!block;n#constructor#0;n#StudentTable#0" />
             <element signature="n#Register#0" />
             <element signature="n#TableForm#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/react-project/src/App.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="570">
+          <caret line="19" column="26" selection-start-line="19" selection-start-column="26" selection-end-line="19" selection-end-column="26" />
         </state>
       </provider>
     </entry>

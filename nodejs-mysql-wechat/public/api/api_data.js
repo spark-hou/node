@@ -1931,8 +1931,8 @@ define({ "api": [
   {
     "type": "post",
     "url": "/api/upload/avatar/",
-    "title": "admin用户头像上传API",
-    "description": "<p>上传图片会自动检测图片质量，压缩图片，体积&lt;2M，不限制尺寸，存储至avatar文件夹</p>",
+    "title": "用户头像上传API",
+    "description": "<p>上传图片会自动检测图片质量，压缩图片，体积&lt;2M，尺寸（120~300）必须是正方形，存储至avatar文件夹</p>",
     "name": "UploadAvatar",
     "group": "Upload_Image",
     "parameter": {
