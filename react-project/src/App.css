@@ -1,3 +1,4 @@
+
 .table{
   width: 100%;
   border: 1px solid #666666;
@@ -7,4 +8,93 @@
 }
 .table td{
   border:  1px solid #eeeeee;
+}
+
+.box1{
+  width: 200px;
+  height: 200px;
+  border: 2px solid orange;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -ms-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
+
+}
+
+.box1.active{
+  -webkit-transform: translateX(400px);
+  -moz-transform: translateX(400px);
+  -ms-transform: translateX(400px);
+  -o-transform: translateX(400px);
+  transform: translateX(400px);
+}
+
+
+.table-container .box {
+  width: 1098px;
+  margin: 0 auto;
+  padding: 5px 20px;
+  background-color: white;
+  border: 1px solid #ECECEC;
+  border-bottom: 10px solid #E8F3EC;
+}
+
+.table-container .add,
+.table-container .search {
+  width: 1098px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.table-container table {
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.table-container label {
+  font-size: 14px;
+  color: black;
+}
+
+.table-container input {
+  height: 30px;
+  width: 185px;
+  border-radius: 3px;
+  padding: 0 5px;
+  outline: none;
+  border: 1px solid #CCCCCC;
+}
+.table-container button{
+  font-size: 14px;
+  color: white;
+  border-radius: 3px;
+  background-color: #5BC0DE;
+  outline: none;
+  border: 1px solid #5BC0DE;
+  padding: 6px 20px;
+  margin: 0 5px;
+}
+.table-container th{
+  font-weight: bold;
+  font-size: 14px;
+  padding: 10px;
+  border: 1px solid #CCCCCC;
+  border-bottom: 2px solid #CCCCCC;
+}
+.table-container .h1{
+  width: 175px;
+}
+.table-container .h2{
+  width: 325px;
+}
+.table-container .h3{
+  width: 235px;
+}
+.table-container td{
+  border: 1px solid #CCCCCC;
+}
+.table-container .bg{
+  background-color: red;
+  border: 1px solid red;
 }
