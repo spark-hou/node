@@ -1,0 +1,53 @@
+.item {
+    margin-bottom: 10px;
+    padding: 18px;
+    padding-bottom: 14px;
+    background: #fff;
+}
+
+.item .content {
+    border-bottom: 1px solid #ebebeb;
+}
+
+.content .receiver {
+    padding-bottom: 7px;
+    font-size: 16px;
+    color: #666;
+}
+
+.receiver .name {
+    margin-right: 10px;
+}
+
+.content .address {
+    padding: 4px 0 16px 0;
+    font-size: 14px;
+    color: #999;
+}
+
+.action-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 20px;
+    font-size: 14px;
+}
+
+.default label {
+    display: flex;
+    align-items: center;
+}
+
+.default input[type=radio] {
+    width: 16px;
+    height: 16px;
+    margin-right: 12px;
+}
+
+.action .edit {
+    margin-right: 24px;
+}
+
+.action i {
+    margin-right: 6px;
+}

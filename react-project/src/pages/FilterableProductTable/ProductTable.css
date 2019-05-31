@@ -1,0 +1,15 @@
+.table {
+    box-shadow: 0 0 10px 0 rgba(0,0,0,0.1);
+}
+
+.table .thead {
+    border-bottom: 2px solid #bbbbbb;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.thead .th {
+    padding: 16px 30px;
+    font-weight: bold;
+}

@@ -1,0 +1,16 @@
+.add-btn {
+    display: block;
+    width: 100%;
+    line-height: 48px;
+    background: #ff464e;
+    color: #fff;
+    font-size: 20px;
+    text-align: center;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+}
+
+.add-btn:hover {
+    color: white;
+}

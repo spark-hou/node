@@ -1,0 +1,76 @@
+/*底部固定导航*/
+.tabBar {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    border-top: 1px solid #ebebeb;
+    width: 100%;
+    background: #fff;
+    padding-top: 6px;
+}
+
+.tabBar ul {
+    display: flex;
+    display: -webkit-flex;
+    justify-content: space-around;
+}
+
+.tabBar ul li a {
+    display: block;
+    text-align: center;
+}
+
+.tabBar ul li a div {
+    font-size: 12px;
+}
+
+.tabBar a .icon {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background-size: cover;
+}
+
+.tabBar a.active {
+    color: red;
+}
+
+.tabBar .icon-home {
+    background: url('./icons/home.png');
+
+}
+
+.active .icon-home {
+    background: url('./icons/home-s.png');
+
+}
+
+.tabBar .icon-category {
+    background: url('./icons/category.png');
+
+}
+
+.active .icon-category {
+    background: url('./icons/category-s.png');
+
+}
+
+.tabBar .icon-shopCar {
+    background: url('./icons/cart.png');
+
+}
+
+.active .icon-shopCar {
+    background: url('./icons/cart-s.png');
+
+}
+
+.tabBar .icon-center {
+    background: url('./icons/user.png');
+
+}
+
+.active .icon-center {
+    background: url('./icons/user-s.png');
+
+}
